@@ -1,6 +1,6 @@
 .venv
 data/FETAL_PLANES_DB_data.xlsx
-data/FETAL_PLANES_DB_data.xlsx
+data/FETAL_PLANES_DB_data.csv
 data/FETAL_PLANES_ZENODO.zip
 data/Images
 data/output
