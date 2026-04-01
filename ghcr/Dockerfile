@@ -20,10 +20,8 @@ COPY pyproject.toml ./
 COPY uv.lock* ./
 
 RUN /root/.local/bin/uv venv /.venv && \
-    /root/.local/bin/uv sync --extra test --extra learning --no-install-project --no-editable
+    /root/.local/bin/uv sync --no-install-project --no-editable
 
 COPY . .
 
-RUN /root/.local/bin/uv sync
-
-CMD ["python"]
+RUN /root/.local/bin/uv sync --extra test --extra learning
