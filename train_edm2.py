@@ -15,7 +15,7 @@ import click
 import torch
 import dnnlib
 from torch_utils import distributed as dist
-import training.training_loop
+import training.training_loop as training_loop
 
 warnings.filterwarnings(
     "ignore", "You are using `torch.load` with `weights_only=False`"
@@ -272,7 +272,7 @@ def launch_training(run_dir, c):
     dnnlib.util.Logger(
         file_name=os.path.join(run_dir, "log.txt"), file_mode="a", should_flush=True
     )
-    training.training_loop(run_dir=run_dir, **c)
+    training_loop(run_dir=run_dir, **c)
 
 
 # ----------------------------------------------------------------------------
