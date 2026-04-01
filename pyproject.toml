@@ -28,17 +28,17 @@ classifiers = [
 
 dependencies = [
   "numpy",
-  # "matplotlib",
-  # "opencv-python-headless",
-  # "notebook",
-  # "scikit-image",
-  # "tqdm",
-  # "PyQt6",
   "wandb",
   "pandas",
   "loguru",
   "omegaconf",
   "pyyaml",
+  "notebook",
+  # "matplotlib",
+  # "opencv-python-headless",
+  # "scikit-image",
+  # "tqdm",
+  # "PyQt6",
 ]
 
 [project.optional-dependencies]

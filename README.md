@@ -25,7 +25,12 @@ uv sync
 uv pip list --verbose #check versions
 ```
 
-3. pre-commit hooks
+3. Launch Jupyter locally
+```bash
+uv run jupyter notebook
+```
+
+4. pre-commit hooks
 
 ```bash
 #Generate the baseline file
