@@ -272,7 +272,7 @@ def launch_training(run_dir, c):
     dnnlib.util.Logger(
         file_name=os.path.join(run_dir, "log.txt"), file_mode="a", should_flush=True
     )
-    training.training_loop.training_loop(run_dir=run_dir, **c)
+    training.training_loop(run_dir=run_dir, **c)
 
 
 # ----------------------------------------------------------------------------
