@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=69", "setuptools-scm[toml]>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xfetusEDM2"
+dynamic = ["version"]
+readme = "README.md"
+requires-python = ">=3.12"
+description = "Python library for synthesis of ultrasound fetal imaging."
+keywords = ["artificial intelligence", "diffusion models", "ultrasound", "medical imaging"]
+authors = [
+  { name = "Miguel Xochicale", email = "add@email.com" },
+  { name = "Add co-author", email = "add@email.com" }
+]
+maintainers = [
+  { name = "Miguel Xochicale", email = "add@email.com" },
+  { name = "Add maintainer", email = "add@email.com" }
+]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+  "numpy",
+  # "matplotlib",
+  # "opencv-python-headless",
+  # "notebook",
+  # "scikit-image",
+  # "tqdm",
+  # "PyQt6",
+  "wandb",
+  "pandas",
+  "loguru",
+  "omegaconf",
+  "pyyaml",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest",
+  "pylint",
+  "black",
+  "isort",
+  "codespell",
+  "pre-commit",
+]
+learning = [
+  "torch",
+  "torchvision",
+  "einops",
+  "scikit-learn",
+  "diffusers",
+  "accelerate",
+  "basicsr",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["xfetusEDM2*"]
+
+[tool.setuptools_scm]
+version_file = "xfetusEDM2/_version.py"

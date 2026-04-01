@@ -1,0 +1,24 @@
+.venv
+data/FETAL_PLANES_DB_data.xlsx
+data/FETAL_PLANES_DB_data.xlsx
+data/FETAL_PLANES_ZENODO.zip
+data/Images
+data/output
+
+## temporal __pycache__/
+**/__pycache__/
+
+## .ipynb_checkpoints/
+**/.ipynb_checkpoints
+
+## ignore training checkpoints
+**/*.pth
+
+## ignores vim temporal files
+**/*.swp
+
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
