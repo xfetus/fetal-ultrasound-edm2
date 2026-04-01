@@ -8,15 +8,15 @@ This registry allows you to store, manage, and version Docker images directly th
 ## Build Dockerfile container
 Go to the directory containing the Dockerfile and the other relevant files, then define the following environment variables in the terminal to help build the Docker images.
 ```bash
-IMAGENAME=ultrasound-edm2-distributed-learning
+IMAGENAME=fetal-ultrasound-edm2-distributed-learning
 VERSION_ID=v0.0.1
 docker build -t ${IMAGENAME}:${VERSION_ID} -f Dockerfile .
 ```
 See an example of output logs for the command `docker images`:
 ```bash
 #docker images
-IMAGE                                                                 ID             DISK USAGE   CONTENT SIZE   EXTRA
-ultrasound-edm2-distributed-learning:v0.0.1                                           <>          <>GB   <>GB
+REPOSITORY                                                  TAG       IMAGE ID       CREATED       SIZE
+fetal-ultrasound-edm2-distributed-learning                  v0.0.1    ...            ...           16.9GB
 ```
 
 ## To debug
@@ -42,21 +42,21 @@ docker run --rm \
 GITHUB_USERNAME=YOUR_GITHUB_USERNAME_ID
 export CR_PAT=YOUR_PERSONAL_ACCESS_TOKEN
 echo ${CR_PAT} | docker login ghcr.io -u ${GITHUB_USERNAME} --password-stdin
-	#Login Succeeded
+#Login Succeeded
 ```
 
 ## Pushing container images
 Tag your Docker image using the image ID and your desired image name and hosting destination.
 ```bash
-GITHUB_ORG=YOUR_GITHUB_ORG or YOUR_GITHUB_USERNAME_ID
-PROJECT_NAME=YOUR_PROJECT_NAME or #PROJECT_NAME=$IMAGENAME
+GITHUB_ORG=xfetus
+PROJECT_NAME=fetal-ultrasound-edm2
 docker tag ${IMAGENAME}:${VERSION_ID} ghcr.io/${GITHUB_ORG}/${PROJECT_NAME}/${IMAGENAME}:${VERSION_ID}
 ```
 Pushing container images to GitHub container registry
 ```bash
 docker push ghcr.io/${GITHUB_ORG}/${PROJECT_NAME}/${IMAGENAME}:${VERSION_ID}
 ```
-Go to packages `https://github.com/orgs/${GITHUB_ORG}/packages` and in package settings, change visibility to public.
+Go to packages `https://github.com/orgs/${GITHUB_ORG}/packages` and in `package settings` at the Danger Zone, change visibility to public.
 
 
 ## Docker Management Commands
@@ -66,5 +66,5 @@ docker images && docker ps # that list images containers
 docker exec -it <container_id> # Exececute command inside the containers
 docker exec -it $(docker container ls  | grep '${IMAGENAME}' | awk '{print $1}') # use IMAGENAME variable to select container id for docker command execution
 docker rmi --force <ID> # remove docker images
-qdocker system prune -f --volumes # free up disk space
+docker system prune -f --volumes # free up disk space
 ```
