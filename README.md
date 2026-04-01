@@ -25,6 +25,16 @@ uv sync
 uv pip list --verbose #check versions
 ```
 
+3. pre-commit hooks
+
+```bash
+#Generate the baseline file
+mkdir -p .github
+detect-secrets scan > .github/.secrets.baseline
+# run pre-commit hooks
+uv run pre-commit run -a
+```
+
 ## :brain: Training the Model
 
 To train the EDM2 model on the the fetal planes dataset first download the dataset from https://zenodo.org/records/3904280. Next, run the following command in the root directory of this repo:
@@ -79,7 +89,7 @@ where the `fake_root` flag is where generated images are saved.
 ## 🤝 Contributing
 
 We welcome contributions from the community. Before submitting a PR:
-```
+```bash
 uv run pre-commit run -a
 ```
 This ensures code formatting and linting checks pass.

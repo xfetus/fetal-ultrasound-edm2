@@ -48,6 +48,7 @@ test = [
   "black",
   "isort",
   "codespell",
+  "detect-secrets",
   "pre-commit",
 ]
 learning = [

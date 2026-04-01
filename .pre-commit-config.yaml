@@ -10,7 +10,7 @@ repos:
     rev: v1.5.0
     hooks:
       - id: detect-secrets
-        args: ['--baseline', '.github/.secrets.baseline', '--exclude-files', '\.secrets\.baseline']
+        args: ['--baseline', '.secrets.baseline']
 
   # Ruff（black + isort + flake8）
   - repo: https://github.com/astral-sh/ruff-pre-commit
