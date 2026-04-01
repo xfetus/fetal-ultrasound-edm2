@@ -4,7 +4,8 @@ FROM docker.io/pytorch/pytorch:2.7.1-cuda12.8-cudnn9-devel
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     UV_PROJECT_ENVIRONMENT=/.venv \
-    PATH="/root/.local/bin:/.venv/bin:${PATH}"
+    VIRTUAL_ENV=/.venv \
+    PATH="/.venv/bin:/root/.local/bin:${PATH}"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
