@@ -68,4 +68,3 @@ docker exec -it $(docker container ls  | grep '${IMAGENAME}' | awk '{print $1}')
 docker rmi --force <ID> # remove docker images
 qdocker system prune -f --volumes # free up disk space
 ```
-

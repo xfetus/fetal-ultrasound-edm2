@@ -11,7 +11,7 @@ The repository includes utilities for training models, generating synthetic imag
 Ensure that your system has compatible NVIDIA drivers installed.
 ```bash
 sudo apt install nvidia-driver-550 #Update the NVIDIA Driver
-sudo reboot # if in local machine reboot 
+sudo reboot # if in local machine reboot
 ```
 
 2. Create a Python Environment (using uv)
@@ -73,7 +73,7 @@ python fid_measurement.py \
             --device cuda
 ```
 
-where the `fake_root` flag is where generated images are saved. 
+where the `fake_root` flag is where generated images are saved.
 
 
 ## 🤝 Contributing
