@@ -3,9 +3,7 @@ FROM docker.io/pytorch/pytorch:2.7.1-cuda12.8-cudnn9-devel
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    UV_PROJECT_ENVIRONMENT=/.venv \
-    VIRTUAL_ENV=/.venv \
-    PATH="/.venv/bin:/root/.local/bin:${PATH}"
+    PATH="/workspace/.venv/bin:/root/.local/bin:${PATH}"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
@@ -18,10 +16,16 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
 
 COPY pyproject.toml ./
 COPY uv.lock* ./
-
-RUN /root/.local/bin/uv venv /.venv && \
-    /root/.local/bin/uv sync --no-install-project --no-editable
-
 COPY . .
 
-RUN /root/.local/bin/uv sync --extra test --extra learning
+RUN rm -rf /workspace/.venv && \
+    /opt/conda/bin/python3.11 -m venv /workspace/.venv && \
+    VIRTUAL_ENV=/workspace/.venv \
+    /root/.local/bin/uv sync \
+      --active \
+      --frozen \
+      --extra test \
+      --extra learning
+
+RUN /workspace/.venv/bin/python -c "import sys; print(sys.executable)" && \
+    /workspace/.venv/bin/python -c "import encodings, pandas; print('ok')"
