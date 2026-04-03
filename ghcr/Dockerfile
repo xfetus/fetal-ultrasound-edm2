@@ -19,18 +19,21 @@ COPY pyproject.toml ./
 COPY uv.lock* ./
 COPY . .
 
-# Make sure a stale local .venv is never copied into the image
-RUN rm -rf /workspace/.venv
+RUN rm -rf /workspace/.venv /opt/venv
 
-# Create the env outside /workspace so runtime mounts do not hide it
-RUN /opt/conda/bin/python3.11 -m venv /opt/venv && \
+# Create the runtime venv explicitly
+RUN /opt/conda/bin/python3.11 -m venv /opt/venv
+
+RUN VIRTUAL_ENV=/opt/venv \
     /root/.local/bin/uv sync \
       --active \
       --frozen \
       --extra test \
       --extra learning
 
-RUN /opt/venv/bin/python -c "import sys; print(sys.executable)" && \
+RUN test -x /opt/venv/bin/python && \
+    /opt/venv/bin/python --version && \
+    /opt/venv/bin/python -c "import sys; print(sys.executable)" && \
     /opt/venv/bin/python -c "import encodings, pandas; print('ok')"
 
 CMD ["/opt/venv/bin/python", "--version"]
