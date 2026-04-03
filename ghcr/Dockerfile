@@ -24,9 +24,6 @@ RUN /root/.local/bin/uv pip install --system -r pyproject.toml \
     --extra test \
     --extra learning
 
-# Install the project itself too, if train_edm2.py imports local package metadata/entry points
-RUN /opt/conda/bin/python3.11 -m pip install -e .
-
 # Hard checks
 RUN /opt/conda/bin/python3.11 -c "import sys; print(sys.executable)" && \
     /opt/conda/bin/python3.11 -c "import pandas; print(pandas.__version__)"
