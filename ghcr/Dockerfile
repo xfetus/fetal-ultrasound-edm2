@@ -3,8 +3,7 @@ FROM docker.io/pytorch/pytorch:2.7.1-cuda12.8-cudnn9-devel
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    UV_PROJECT_ENVIRONMENT=/opt/venv \
-    PATH="/opt/venv/bin:/root/.local/bin:${PATH}"
+    PATH="/root/.local/bin:${PATH}"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
@@ -19,21 +18,15 @@ COPY pyproject.toml ./
 COPY uv.lock* ./
 COPY . .
 
-RUN rm -rf /workspace/.venv /opt/venv
+# Install into the same interpreter used at runtime
+RUN /root/.local/bin/uv pip install --system -r pyproject.toml \
+    --python /opt/conda/bin/python3.11 \
+    --extra test \
+    --extra learning
 
-# Create the runtime venv explicitly
-RUN /opt/conda/bin/python3.11 -m venv /opt/venv
+# Install the project itself too, if train_edm2.py imports local package metadata/entry points
+RUN /opt/conda/bin/python3.11 -m pip install -e .
 
-RUN VIRTUAL_ENV=/opt/venv \
-    /root/.local/bin/uv sync \
-      --active \
-      --frozen \
-      --extra test \
-      --extra learning
-
-RUN test -x /opt/venv/bin/python && \
-    /opt/venv/bin/python --version && \
-    /opt/venv/bin/python -c "import sys; print(sys.executable)" && \
-    /opt/venv/bin/python -c "import encodings, pandas; print('ok')"
-
-CMD ["/opt/venv/bin/python", "--version"]
+# Hard checks
+RUN /opt/conda/bin/python3.11 -c "import sys; print(sys.executable)" && \
+    /opt/conda/bin/python3.11 -c "import pandas; print(pandas.__version__)"
