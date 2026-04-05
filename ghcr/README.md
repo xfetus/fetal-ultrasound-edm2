@@ -8,15 +8,16 @@ This registry allows you to store, manage, and version Docker images directly th
 ## Build Dockerfile container
 Go to the directory containing the Dockerfile and the other relevant files, then define the following environment variables in the terminal to help build the Docker images.
 ```bash
+# cd project roof path
 IMAGENAME=fetal-ultrasound-edm2-distributed-learning
-VERSION_ID=v0.0.1
-docker build -t ${IMAGENAME}:${VERSION_ID} -f Dockerfile .
+VERSION_ID=v0.0.2
+docker build --network=host -t ${IMAGENAME}:${VERSION_ID} -f ghcr/Dockerfile .
 ```
 See an example of output logs for the command `docker images`:
 ```bash
 #docker images
-REPOSITORY                                                  TAG       IMAGE ID       CREATED       SIZE
-fetal-ultrasound-edm2-distributed-learning                  v0.0.1    ...            ...           16.9GB
+REPOSITORY                                  TAG       IMAGE ID  CREATED   SIZE
+fetal-ultrasound-edm2-distributed-learning  v?.?.?    <>        <>        <>GB
 ```
 
 ## To debug

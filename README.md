@@ -20,8 +20,7 @@ sudo reboot # if in local machine reboot
 wget -qO- https://astral.sh/uv/install.sh | sh
 uv venv --python 3.12 # Create a virtual environment at .venv.
 source .venv/bin/activate #To activate the virtual environment
-uv pip install -e ".[test,learning]" # Install the package in editable mode
-uv sync
+uv sync --extra test --extra learning
 uv pip list --verbose #check versions
 ```
 
@@ -98,3 +97,10 @@ We welcome contributions from the community. Before submitting a PR:
 uv run pre-commit run -a
 ```
 This ensures code formatting and linting checks pass.
+
+
+## Clone repository
+You need to [authorize a personal access token for use with single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-single-sign-on/authorizing-a-personal-access-token-for-use-with-single-sign-on)
+```bash
+git clone https://github.com/xfetus/fetal-ultrasound-edm2.git
+```
