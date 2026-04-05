@@ -16,14 +16,15 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
 
 COPY pyproject.toml ./
 COPY uv.lock* ./
-COPY . .
 
-# Install into the same interpreter used at runtime
-RUN /root/.local/bin/uv pip install --system -r pyproject.toml \
+RUN /root/.local/bin/uv pip install \
+    --system \
     --python /opt/conda/bin/python3.11 \
+    -r pyproject.toml \
     --extra test \
     --extra learning
 
-# Hard checks
+COPY . .
+
 RUN /opt/conda/bin/python3.11 -c "import sys; print(sys.executable)" && \
-    /opt/conda/bin/python3.11 -c "import pandas; print(pandas.__version__)"
+    /opt/conda/bin/python3.11 -c "import pandas as pd; print(pd.__version__)"
