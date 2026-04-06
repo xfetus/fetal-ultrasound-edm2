@@ -1,4 +1,4 @@
-# Customised images
+# Customised images with GitHub Container Registry (GHCR)
 
 ## Creating a container registry
 
@@ -16,12 +16,12 @@ docker build --network=host -t ${IMAGENAME}:${VERSION_ID} -f ghcr/Dockerfile .
 See an example of output logs for the command `docker images`:
 ```bash
 #docker images
-REPOSITORY                                  TAG       IMAGE ID  CREATED   SIZE
-fetal-ultrasound-edm2-distributed-learning  v?.?.?    <>        <>        <>GB
+REPOSITORY                                  TAG       			IMAGE ID  CREATED   SIZE
+fetal-ultrasound-edm2-distributed-learning  v<MAJOR>.<MINOR>.<PATCH>    <>        <>        <>GB
 ```
 
-## To debug
-You can run a test distributed functionality:
+## Debug image
+* check pyhon version
 ```
 docker run --rm \
   -e MASTER_ADDR=localhost \
@@ -29,7 +29,18 @@ docker run --rm \
   -e RANK=0 \
   -e WORLD_SIZE=1 \
   ${IMAGENAME}:${VERSION_ID} \
-  python -c "import torch; print('PyTorch successfully imported')"
+  python -c "import sys; print(sys.version); print(sys.executable)"
+```
+
+* iterative mode
+```
+docker run --rm -it \
+  -e MASTER_ADDR=localhost \
+  -e MASTER_PORT=12355 \
+  -e RANK=0 \
+  -e WORLD_SIZE=1 \
+  ${IMAGENAME}:${VERSION_ID} \
+  bash
 ```
 
 ## Authenticating with a personal access token (classic)
@@ -58,6 +69,11 @@ Pushing container images to GitHub container registry
 docker push ghcr.io/${GITHUB_ORG}/${PROJECT_NAME}/${IMAGENAME}:${VERSION_ID}
 ```
 Go to packages `https://github.com/orgs/${GITHUB_ORG}/packages` and in `package settings` at the Danger Zone, change visibility to public.
+
+
+## GHCR package fetal-ultrasound-edm2/fetal-ultrasound-edm2-distributed-learning
+
+https://github.com/orgs/xfetus/packages/container/package/fetal-ultrasound-edm2%2Ffetal-ultrasound-edm2-distributed-learning
 
 
 ## Docker Management Commands
