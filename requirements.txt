@@ -1,5 +1,4 @@
 # core dependencies
-opencv-python
 loguru
 notebook
 numpy

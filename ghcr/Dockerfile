@@ -21,7 +21,10 @@ COPY requirements.txt .
 RUN /opt/conda/bin/python -m pip install --upgrade pip && \
     /opt/conda/bin/python -m pip install --no-cache-dir -r requirements.txt && \
     /opt/conda/bin/python -m pip uninstall -y \
-      opencv-python opencv-contrib-python opencv-python-headless opencv-contrib-python-headless || true && \
+      opencv-python \
+      opencv-contrib-python \
+      opencv-python-headless \
+      opencv-contrib-python-headless || true && \
     /opt/conda/bin/python -m pip install --no-cache-dir opencv-python-headless==4.12.0.88
 
 RUN dpkg -s libxcb1 && \
