@@ -29,7 +29,7 @@ docker run --rm \
   -e RANK=0 \
   -e WORLD_SIZE=1 \
   ${IMAGENAME}:${VERSION_ID} \
-  python -c "import sys; print(sys.version); print(sys.executable); import torch; print(torch.__version__)"
+  python -c "import sys; print(sys.version); print(sys.executable); import torch; print(torch.__version__); import cv2; print('cv2 ok')"
 ```
 
 * iterative mode
