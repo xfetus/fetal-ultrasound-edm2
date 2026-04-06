@@ -1,0 +1,26 @@
+# core dependencies
+loguru
+notebook
+numpy
+omegaconf
+pandas
+pyyaml
+wandb
+
+# test dependencies
+black
+codespell
+detect-secrets
+isort
+pre-commit
+pylint
+pytest
+
+# learning dependencies
+accelerate
+basicsr
+diffusers
+einops
+scikit-learn
+torch
+torchvision

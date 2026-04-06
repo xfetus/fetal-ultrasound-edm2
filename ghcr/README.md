@@ -10,7 +10,7 @@ Go to the directory containing the Dockerfile and the other relevant files, then
 ```bash
 # cd project roof path
 IMAGENAME=fetal-ultrasound-edm2-distributed-learning
-VERSION_ID=v0.0.2
+VERSION_ID=v0.0.3
 docker build --network=host -t ${IMAGENAME}:${VERSION_ID} -f ghcr/Dockerfile .
 ```
 See an example of output logs for the command `docker images`:
@@ -20,8 +20,8 @@ REPOSITORY                                  TAG       			IMAGE ID  CREATED   SIZ
 fetal-ultrasound-edm2-distributed-learning  v<MAJOR>.<MINOR>.<PATCH>    <>        <>        <>GB
 ```
 
-## Debug image
-* check pyhon version
+## Debuging image
+* check python version and dependencies
 ```
 docker run --rm \
   -e MASTER_ADDR=localhost \
@@ -29,7 +29,7 @@ docker run --rm \
   -e RANK=0 \
   -e WORLD_SIZE=1 \
   ${IMAGENAME}:${VERSION_ID} \
-  python -c "import sys; print(sys.version); print(sys.executable)"
+  python -c "import sys; print(sys.version); print(sys.executable); import torch; print(torch.__version__)"
 ```
 
 * iterative mode
