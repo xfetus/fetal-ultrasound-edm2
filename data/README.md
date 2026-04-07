@@ -19,9 +19,9 @@ Site and size
 
 
 ```bash
-mkdir -p FETAL_PLANES_DB && mkdir -p FETAL_PLANES_DB/OUTPUT_DIRECTORY && cd FETAL_PLANES_DB
+mkdir -p ~/datasets/FETAL_PLANES_DB && mkdir -p ~/datasets/FETAL_PLANES_DB/OUTPUT_DIRECTORY && cd ~/datasets/FETAL_PLANES_DB
 wget -c --content-disposition https://zenodo.org/records/3904280/files/FETAL_PLANES_ZENODO.zip?download=1
-unzip FETAL_PLANES_ZENODO.zip
+unzip FETAL_PLANES_ZENODO.zip && rm FETAL_PLANES_ZENODO.zip
 ```
 
 
