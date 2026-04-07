@@ -6,32 +6,28 @@ The repository includes utilities for training models, generating synthetic imag
 ## Getting Started
 
 :nut_and_bolt: Installation
-1. Install NVIDIA Drivers
 
-Ensure that your system has compatible NVIDIA drivers installed.
+* Install NVIDIA Drivers. Ensure that your system has compatible NVIDIA drivers installed.
 ```bash
 sudo apt install nvidia-driver-550 #Update the NVIDIA Driver
 sudo reboot # if in local machine reboot
 ```
 
-2. Create a Python Environment (using uv)
-
+* Create a Python Environment (using uv)
 ```bash
 wget -qO- https://astral.sh/uv/install.sh | sh
-uv venv --python 3.12 # Create a virtual environment at .venv.
+uv venv --python 3.11 # Create a virtual environment at .venv.
 source .venv/bin/activate #To activate the virtual environment
-uv pip install -e ".[test,learning]" # Install the package in editable mode
-uv sync
+uv sync --extra test --extra learning
 uv pip list --verbose #check versions
 ```
 
-3. Launch Jupyter locally
+* Launch Jupyter locally
 ```bash
 uv run jupyter notebook
 ```
 
-4. pre-commit hooks
-
+* pre-commit hooks
 ```bash
 #Generate the baseline file
 mkdir -p .github
@@ -42,12 +38,13 @@ uv run pre-commit run -a
 
 ## :brain: Training the Model
 
-To train the EDM2 model on the the fetal planes dataset first download the dataset from https://zenodo.org/records/3904280. Next, run the following command in the root directory of this repo:
+To train the EDM2 model on the the fetal planes dataset first download the dataset from https://zenodo.org/records/3904280 as shown in [data](data).
+Then to train XS-sized model for ImageNet-512 using 8 GPUs, for example, run the following command in the root directory of this repo:
 
 ```bash
-torchrun --standalone --nproc_per_node=1 train_edm2.py \
-            --outdir /OUTPUT_DIRECTORY \
-            --data /DATASET_LOCATION \
+torchrun --standalone --nproc_per_node=8 train_edm2.py \
+            --outdir ~/datasets/FETAL_PLANES_DB/OUTPUT_DIRECTORY \
+            --data ~/datasets/FETAL_PLANES_DB \
             --batch 8 \
             --preset edm2-img512-s \
             --batch-gpu=8
@@ -98,3 +95,10 @@ We welcome contributions from the community. Before submitting a PR:
 uv run pre-commit run -a
 ```
 This ensures code formatting and linting checks pass.
+
+
+## Clone repository
+You need to [authorize a personal access token for use with single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-single-sign-on/authorizing-a-personal-access-token-for-use-with-single-sign-on)
+```bash
+git clone https://github.com/xfetus/fetal-ultrasound-edm2.git
+```

@@ -18,9 +18,10 @@ Site and size
 * `FETAL_PLANES_ZENODO.zip md5:2a5fcc2cefb789bcc0f6c1f73e0ea43f 	2.1 GB`
 
 
-```
+```bash
+mkdir -p ~/datasets/FETAL_PLANES_DB && mkdir -p ~/datasets/FETAL_PLANES_DB/OUTPUT_DIRECTORY && cd ~/datasets/FETAL_PLANES_DB
 wget -c --content-disposition https://zenodo.org/records/3904280/files/FETAL_PLANES_ZENODO.zip?download=1
-unzip FETAL_PLANES_ZENODO.zip
+unzip FETAL_PLANES_ZENODO.zip && rm FETAL_PLANES_ZENODO.zip
 ```
 
 

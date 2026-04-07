@@ -1,22 +1,21 @@
-[build-system]
-requires = ["setuptools>=69", "setuptools-scm[toml]>=8"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "xfetusEDM2"
-dynamic = ["version"]
-readme = "README.md"
-requires-python = ">=3.12"
+name = "xfetusedm2"
+version = "0.1.0"
 description = "Python library for synthesis of ultrasound fetal imaging."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
 keywords = ["artificial intelligence", "diffusion models", "ultrasound", "medical imaging"]
+
 authors = [
+  { name = "Harvey Mannering", email = "add@email.com" },
   { name = "Miguel Xochicale", email = "add@email.com" },
-  { name = "Add co-author", email = "add@email.com" }
 ]
+
 maintainers = [
+  { name = "Harvey Mannering", email = "add@email.com" },
   { name = "Miguel Xochicale", email = "add@email.com" },
-  { name = "Add maintainer", email = "add@email.com" }
 ]
+
 classifiers = [
   "Development Status :: 2 - Pre-Alpha",
   "Intended Audience :: Developers",
@@ -27,46 +26,37 @@ classifiers = [
 ]
 
 dependencies = [
-  "numpy",
-  "wandb",
-  "pandas",
+  "opencv-python-headless",
   "loguru",
-  "omegaconf",
-  "pyyaml",
   "notebook",
-  # "matplotlib",
-  # "opencv-python-headless",
-  # "scikit-image",
-  # "tqdm",
-  # "PyQt6",
+  "numpy",
+  "omegaconf",
+  "pandas",
+  "pyyaml",
+  "wandb",
 ]
 
 [project.optional-dependencies]
+
 test = [
-  "pytest",
-  "pylint",
   "black",
-  "isort",
   "codespell",
   "detect-secrets",
+  "isort",
   "pre-commit",
+  "pylint",
+  "pytest",
 ]
+
 learning = [
-  "torch",
-  "torchvision",
-  "einops",
-  "scikit-learn",
-  "diffusers",
   "accelerate",
   "basicsr",
+  "diffusers",
+  "einops",
+  "scikit-learn",
+  "torch",
+  "torchvision",
 ]
 
-[tool.setuptools]
-include-package-data = true
-
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["xfetusEDM2*"]
-
-[tool.setuptools_scm]
-version_file = "xfetusEDM2/_version.py"
+[tool.uv]
+package = false
