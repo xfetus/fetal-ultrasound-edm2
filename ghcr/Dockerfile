@@ -19,17 +19,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 
 RUN /opt/conda/bin/python -m pip install --upgrade pip && \
-    /opt/conda/bin/python -m pip install --no-cache-dir -r requirements.txt && \
-    /opt/conda/bin/python -m pip uninstall -y \
-      opencv-python \
-      opencv-contrib-python \
-      opencv-python-headless \
-      opencv-contrib-python-headless || true && \
-    /opt/conda/bin/python -m pip install --no-cache-dir opencv-python-headless==4.12.0.88
+    /opt/conda/bin/python -m pip install --no-cache-dir -r requirements.txt
 
-RUN dpkg -s libxcb1 && \
-    ls -l /usr/lib/x86_64-linux-gnu/libxcb.so.1 && \
-    /opt/conda/bin/python -c "import cv2; print('cv2 ok:', cv2.__version__)"
+ RUN dpkg -s libxcb1 && \
+    ls -l /usr/lib/x86_64-linux-gnu/libxcb.so.1
 
 COPY . .
 
