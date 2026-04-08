@@ -17,11 +17,13 @@ pre-commit
 pylint
 pytest
 
+--index-url https://download.pytorch.org/whl/cu128
+
 # learning dependencies
 accelerate
 basicsr
 diffusers
 einops
 scikit-learn
-torch
+torch==2.10.0
 torchvision
