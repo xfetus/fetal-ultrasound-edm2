@@ -12,9 +12,9 @@ The repository includes utilities for training models, generating synthetic imag
 sudo apt install nvidia-driver-550 #Update the NVIDIA Driver
 sudo reboot # if in local machine reboot
 ```
-* Check PyTorch and supported CUDA version https://pypi.org/project/torch/#history
-:warning: PyTorch (2.11.0, released on Mar 23, 2026); CUDA versions available (CUDA 12.6, CUDA 12.8, CUDA 13.0 (stable))
-:warning: PyTorch (2.10.0, released on Jan 21, 2026); CUDA versions available (CUDA 12.6, CUDA 12.8)
+* Check PyTorch and supported CUDA version https://pypi.org/project/torch/#history   
+:warning: PyTorch (2.11.0, released on Mar 23, 2026); CUDA versions available (CUDA 12.6, CUDA 12.8, CUDA 13.0 (stable))    
+:warning: PyTorch (2.10.0, released on Jan 21, 2026); CUDA versions available (CUDA 12.6, CUDA 12.8)   
 
 
 * Create a Python Environment (using uv)
