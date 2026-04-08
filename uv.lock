@@ -3544,8 +3544,8 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'test'" },
     { name = "pyyaml" },
     { name = "scikit-learn", marker = "extra == 'learning'" },
-    { name = "torch", marker = "extra == 'learning'", specifier = "==2.10.0" },
-    { name = "torchvision", marker = "extra == 'learning'" },
+    { name = "torch", marker = "extra == 'learning'", specifier = "==2.10.0", index = "pytorch-cu128" },
+    { name = "torchvision", marker = "extra == 'learning'", index = "pytorch-cu128" },
     { name = "wandb" },
 ]
 

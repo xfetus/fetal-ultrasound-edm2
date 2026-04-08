@@ -17,6 +17,8 @@ pre-commit
 pylint
 pytest
 
+--index-url https://download.pytorch.org/whl/cu128
+
 # learning dependencies
 accelerate
 basicsr
