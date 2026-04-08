@@ -54,7 +54,7 @@ learning = [
   "diffusers",
   "einops",
   "scikit-learn",
-  "torch",
+  "torch==2.10.0",
   "torchvision",
 ]
 

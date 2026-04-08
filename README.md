@@ -12,6 +12,9 @@ The repository includes utilities for training models, generating synthetic imag
 sudo apt install nvidia-driver-550 #Update the NVIDIA Driver
 sudo reboot # if in local machine reboot
 ```
+:warning: PyTorch (2.11.0, released on Mar 23, 2026); CUDA versions available (CUDA 12.6, CUDA 12.8, CUDA 13.0 (stable))
+:warning: PyTorch (2.10.0, released on Jan 21, 2026); CUDA versions available (CUDA 12.6, CUDA 12.8)
+
 
 * Create a Python Environment (using uv)
 ```bash
@@ -42,7 +45,7 @@ To train the EDM2 model on the the fetal planes dataset first download the datas
 Then to train XS-sized model for ImageNet-512 using 8 GPUs, for example, run the following command in the root directory of this repo:
 
 ```bash
-torchrun --standalone --nproc_per_node=8 train_edm2.py \
+torchrun --standalone --nproc_per_node=1 train_edm2.py \
             --outdir ~/datasets/FETAL_PLANES_DB/OUTPUT_DIRECTORY \
             --data ~/datasets/FETAL_PLANES_DB \
             --batch 8 \
