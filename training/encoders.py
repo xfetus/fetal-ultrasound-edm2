@@ -9,6 +9,8 @@
 
 import os
 import warnings
+from pathlib import Path
+
 import numpy as np
 import torch
 from torch_utils import persistence
@@ -18,6 +20,7 @@ warnings.filterwarnings(
     "ignore", "torch.utils._pytree._register_pytree_node is deprecated."
 )
 warnings.filterwarnings("ignore", "`resume_download` is deprecated")
+
 
 # ----------------------------------------------------------------------------
 # Abstract base class for encoders/decoders that convert back and forth
@@ -86,7 +89,8 @@ class StandardRGBEncoder(Encoder):
 class StabilityVAEEncoder(Encoder):
     def __init__(
         self,
-        vae_name="stabilityai/sd-vae-ft-mse",  # Name of the VAE to use.
+        vae_path="~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse",  # Local path to VAE files.
+        vae_name="stabilityai/sd-vae-ft-mse",  # HF repo id fallback.
         raw_mean=[5.81, 3.25, 0.12, -2.15],  # Assumed mean of the raw latents.
         raw_std=[
             4.17,
@@ -99,6 +103,7 @@ class StabilityVAEEncoder(Encoder):
         batch_size=8,  # Batch size to use when running the VAE.
     ):
         super().__init__()
+        self.vae_path = os.path.expanduser(vae_path) if vae_path is not None else None
         self.vae_name = vae_name
         self.scale = np.float32(final_std) / np.float32(raw_std)
         self.bias = np.float32(final_mean) - np.float32(raw_mean) * self.scale
@@ -108,7 +113,11 @@ class StabilityVAEEncoder(Encoder):
     def init(self, device):  # force lazy init to happen now
         super().init(device)
         if self._vae is None:
-            self._vae = load_stability_vae(self.vae_name, device=device)
+            self._vae = load_stability_vae(
+                vae_path=self.vae_path,
+                vae_name=self.vae_name,
+                device=device,
+            )
         else:
             self._vae.to(device)
 
@@ -153,8 +162,36 @@ class StabilityVAEEncoder(Encoder):
 
 
 def load_stability_vae(
-    vae_name="stabilityai/sd-vae-ft-mse", device=torch.device("cpu")
+    vae_path="~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse",
+    vae_name="stabilityai/sd-vae-ft-mse",
+    device=torch.device("cpu"),
 ):
+    """
+    Load Stability AI VAE from:
+      1. local directory if vae_path exists
+      2. otherwise Hugging Face repo id in vae_name
+    """
+    import diffusers  # pip install diffusers # pyright: ignore [reportMissingImports]
+
+    if vae_path is not None:
+        local_path = Path(vae_path).expanduser().resolve()
+        if local_path.is_dir():
+            required_files = [
+                local_path / "config.json",
+                local_path / "diffusion_pytorch_model.safetensors",
+            ]
+            missing = [str(f) for f in required_files if not f.exists()]
+            if missing:
+                raise FileNotFoundError(
+                    f"Local VAE directory is missing required files: {missing}"
+                )
+
+            vae = diffusers.models.AutoencoderKL.from_pretrained(
+                str(local_path),
+                local_files_only=True,
+            )
+            return vae.eval().requires_grad_(False).to(device)
+
     import dnnlib
 
     cache_dir = dnnlib.make_cache_dir_path("diffusers")
@@ -162,18 +199,18 @@ def load_stability_vae(
     os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
     os.environ["HF_HOME"] = cache_dir
 
-    import diffusers  # pip install diffusers # pyright: ignore [reportMissingImports]
-
     try:
-        # First try with local_files_only to avoid consulting tfhub metadata if the model is already in cache.
         vae = diffusers.models.AutoencoderKL.from_pretrained(
-            vae_name, cache_dir=cache_dir, local_files_only=True
+            vae_name,
+            cache_dir=cache_dir,
+            local_files_only=True,
         )
-    except:
-        # Could not load the model from cache; try without local_files_only.
+    except Exception:
         vae = diffusers.models.AutoencoderKL.from_pretrained(
-            vae_name, cache_dir=cache_dir
+            vae_name,
+            cache_dir=cache_dir,
         )
+
     return vae.eval().requires_grad_(False).to(device)
 
 
