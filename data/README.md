@@ -19,7 +19,7 @@ Site and size
 
 
 ```bash
-mkdir -p ~/datasets/FETAL_PLANES_DB && mkdir -p ~/datasets/FETAL_PLANES_DB/OUTPUT_DIRECTORY && cd ~/datasets/FETAL_PLANES_DB
+mkdir -p ~/scratch-volume/FETAL_PLANES_DB && mkdir -p ~/scratch-volume/FETAL_PLANES_DB/OUTPUT_DIRECTORY && cd ~/scratch-volume/FETAL_PLANES_DB
 wget -c --content-disposition https://zenodo.org/records/3904280/files/FETAL_PLANES_ZENODO.zip?download=1
 unzip FETAL_PLANES_ZENODO.zip && rm FETAL_PLANES_ZENODO.zip
 ```
@@ -37,3 +37,12 @@ If you find this dataset useful, please cite:
       doi="10.1038/s41598-020-67076-5",
       year={2020}
     }
+
+
+## Pre-trained Models
+
+```bash
+mkdir -p ~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse && cd ~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse
+wget -4 -O config.json https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json
+wget -4 -O diffusion_pytorch_model.safetensors https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/diffusion_pytorch_model.safetensors
+```

@@ -49,8 +49,8 @@ Then to train XS-sized model for ImageNet-512 using 8 GPUs, for example, run the
 source .venv/bin/activate #To activate the virtual environment
 
 torchrun --standalone --nproc_per_node=1 train_edm2.py \
-            --outdir ~/datasets/FETAL_PLANES_DB/OUTPUT_DIRECTORY \
-            --data ~/datasets/FETAL_PLANES_DB \
+            --outdir ~/scratch-volume/FETAL_PLANES_DB/OUTPUT_DIRECTORY \
+            --data ~/scratch-volume/FETAL_PLANES_DB \
             --batch 8 \
             --preset edm2-img512-s \
             --batch-gpu=8
