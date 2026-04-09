@@ -15,7 +15,6 @@ import json
 import torch
 import dnnlib
 import pandas as pd
-import cv2
 
 try:
     import pyspng
@@ -457,7 +456,9 @@ class UltrasoundDataset(Dataset):
                 top = (h - size) // 2
                 left = (w - size) // 2
                 image = image[top : top + size, left : left + size]
-                image = cv2.resize(image, (512, 512), interpolation=cv2.INTER_LINEAR)
+                image = np.array(
+                    PIL.Image.fromarray(image).resize((512, 512), PIL.Image.BILINEAR)
+                )
                 image = image.reshape(*image.shape[:2], -1).transpose(2, 0, 1)
                 image = np.mean(image, axis=0)
                 image = np.stack([image, image, image])
@@ -468,7 +469,9 @@ class UltrasoundDataset(Dataset):
                 top = (h - size) // 2
                 left = (w - size) // 2
                 image = image[top : top + size, left : left + size]
-                image = cv2.resize(image, (512, 512), interpolation=cv2.INTER_LINEAR)
+                image = np.array(
+                    PIL.Image.fromarray(image).resize((512, 512), PIL.Image.BILINEAR)
+                )
                 image = image.reshape(*image.shape[:2], -1).transpose(2, 0, 1)
                 image = np.mean(image, axis=0)
                 image = np.stack([image, image, image])
@@ -491,6 +494,3 @@ class UltrasoundDataset(Dataset):
 
     def _get_raw_labels(self):
         return self._labels
-
-
-# ----------------------------------------------------------------------------

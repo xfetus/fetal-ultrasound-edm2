@@ -1,5 +1,5 @@
 # core dependencies
-opencv-python-headless
+pillow
 loguru
 notebook
 numpy
@@ -25,5 +25,5 @@ basicsr
 diffusers
 einops
 scikit-learn
-torch==2.10.0
+torch
 torchvision
