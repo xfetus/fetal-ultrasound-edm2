@@ -21,8 +21,7 @@ def init():
     global _sync_device
 
     if not torch.distributed.is_initialized():
-        # Setup some reasonable defaults for env-based distributed init if
-        # not set by the running environment.
+        # Reasonable defaults for env-based distributed init if not already set.
         if "MASTER_ADDR" not in os.environ:
             os.environ["MASTER_ADDR"] = "localhost"
         if "MASTER_PORT" not in os.environ:
@@ -37,12 +36,43 @@ def init():
             os.environ["LOCAL_RANK"] = "0"
         if "WORLD_SIZE" not in os.environ:
             os.environ["WORLD_SIZE"] = "1"
+
+        rank = int(os.environ["RANK"])
+        local_rank = int(os.environ["LOCAL_RANK"])
+        world_size = int(os.environ["WORLD_SIZE"])
+
         backend = "gloo" if os.name == "nt" else "nccl"
         init_method = "env://?use_libuv=False" if os.name == "nt" else "env://"
-        torch.distributed.init_process_group(backend=backend, init_method=init_method)
-        torch.cuda.set_device(int(os.environ.get("LOCAL_RANK", "0")))
 
-    _sync_device = torch.device("cuda") if get_world_size() > 1 else None
+        if backend == "nccl":
+            if not torch.cuda.is_available():
+                raise RuntimeError("NCCL backend selected but CUDA is not available.")
+
+            # Important: bind this process to its GPU before init_process_group().
+            torch.cuda.set_device(local_rank)
+            device = torch.device(f"cuda:{local_rank}")
+
+            torch.distributed.init_process_group(
+                backend=backend,
+                init_method=init_method,
+                rank=rank,
+                world_size=world_size,
+                device_id=device,
+            )
+        else:
+            torch.distributed.init_process_group(
+                backend=backend,
+                init_method=init_method,
+                rank=rank,
+                world_size=world_size,
+            )
+
+    # Use the explicit current CUDA device for sync when distributed and CUDA.
+    if get_world_size() > 1 and torch.cuda.is_available():
+        _sync_device = torch.device(f"cuda:{torch.cuda.current_device()}")
+    else:
+        _sync_device = None
+
     training_stats.init_multiprocessing(rank=get_rank(), sync_device=_sync_device)
 
 

@@ -43,7 +43,7 @@ uv run pre-commit run -a
 ## :brain: Training the Model
 
 To train the EDM2 model on the the fetal planes dataset first download the dataset from https://zenodo.org/records/3904280 as shown in [data](data).
-Then to train XS-sized model for ImageNet-512 using 8 GPUs, for example, run the following command in the root directory of this repo:
+Then to train xxs, s-sized model (`edm2-img512-xxs`,  `edm2-img512-s`,) for ImageNet-512 using 1 or 8 GPUs (`--batch-gpu=1`, `--batch-gpu=8`), for example, run the following command in the root directory of this repo:
 
 ```bash
 source .venv/bin/activate #To activate the virtual environment
@@ -51,9 +51,9 @@ source .venv/bin/activate #To activate the virtual environment
 torchrun --standalone --nproc_per_node=1 train_edm2.py \
             --outdir ~/scratch-volume/FETAL_PLANES_DB/OUTPUT_DIRECTORY \
             --data ~/scratch-volume/FETAL_PLANES_DB \
-            --batch 8 \
-            --preset edm2-img512-s \
-            --batch-gpu=8
+            --batch 1 \
+            --preset edm2-img512-xxs \
+            --batch-gpu=1
 ```
 
 where `DATASET_LOCATION` should be the root directory of the downloaded fetal planes dataset and `OUTPUT_DIRECTORY` is the location we will save our model checkpoints. This particular example trains on the small (s) version of the EDM2 architecture.

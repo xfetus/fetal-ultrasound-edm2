@@ -268,7 +268,11 @@ def launch_training(run_dir, c):
         with open(os.path.join(run_dir, "training_options.json"), "wt") as f:
             json.dump(c, f, indent=2)
 
-    torch.distributed.barrier()
+    if torch.distributed.is_initialized():
+        torch.distributed.barrier(
+            device_ids=[torch.cuda.current_device()]
+        ) if torch.cuda.is_available() else torch.distributed.barrier()
+
     dnnlib.util.Logger(
         file_name=os.path.join(run_dir, "log.txt"), file_mode="a", should_flush=True
     )
