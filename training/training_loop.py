@@ -242,7 +242,7 @@ def training_loop(
         raw_list, lbl_list = [], []
         for i in range(len(val_dataset)):
             dist.print0(
-                f"\r  Processing {i+1}/{len(val_dataset)} ... ", end="", flush=True
+                f"{i+1}/{len(val_dataset)}, ", end="", flush=True
             )  ##TOREMOVE
             img, lbl = val_dataset[i]
             raw_list.append(torch.as_tensor(img))
