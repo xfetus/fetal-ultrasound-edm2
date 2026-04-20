@@ -237,13 +237,18 @@ def training_loop(
         val_dataset = dnnlib.util.construct_class_by_name(**val_kwargs)
         val_dataset.encoder = encoder
         val_dataset.device = device
+        dist.print0("val dataset size:", len(val_dataset))  ##TOREMOVE
         # Collect raw latents (encode_pixels runs inside __getitem__).
         raw_list, lbl_list = [], []
         for i in range(len(val_dataset)):
+            dist.print0(
+                f"\r  Processing {i+1}/{len(val_dataset)} ... ", end="", flush=True
+            )  ##TOREMOVE
             img, lbl = val_dataset[i]
             raw_list.append(torch.as_tensor(img))
             lbl_list.append(torch.as_tensor(lbl))
         raw_stacked = torch.stack(raw_list).to(device)
+        dist.print0("Pre-encoding validation latents... ")  ##TOREMOVE
         # encode_latents is stochastic for the VAE encoder — fix its seed so
         # the validation latents are the same every time we compute val loss.
         rng_state = torch.get_rng_state()
