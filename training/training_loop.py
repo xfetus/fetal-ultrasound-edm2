@@ -241,9 +241,7 @@ def training_loop(
         # Collect raw latents (encode_pixels runs inside __getitem__).
         raw_list, lbl_list = [], []
         for i in range(len(val_dataset)):
-            dist.print0(
-                f"{i+1}/{len(val_dataset)}, ", end="", flush=True
-            )  ##TOREMOVE
+            dist.print0(f"{i+1}/{len(val_dataset)}, ", end="", flush=True)  ##TOREMOVE
             img, lbl = val_dataset[i]
             raw_list.append(torch.as_tensor(img))
             lbl_list.append(torch.as_tensor(lbl))

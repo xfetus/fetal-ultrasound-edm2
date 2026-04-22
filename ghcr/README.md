@@ -10,7 +10,7 @@ Go to the directory containing the Dockerfile and the other relevant files, then
 ```bash
 # cd project roof path
 IMAGENAME=fetal-ultrasound-edm2-distributed-learning
-VERSION_ID=v0.0.7
+VERSION_ID=v0.0.9
 docker build --network=host -t ${IMAGENAME}:${VERSION_ID} -f ghcr/Dockerfile .
 ```
 See an example of output logs for the command `docker images`:
