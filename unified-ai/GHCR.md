@@ -11,7 +11,8 @@ Go to the directory containing the Dockerfile and the other relevant files, then
 # cd project roof path
 IMAGENAME=fetal-ultrasound-edm2-distributed-learning
 VERSION_ID=v0.1.4
-docker build --network=host -t ${IMAGENAME}:${VERSION_ID} -f ghcr/Dockerfile .
+# VERSION_ID=v0.0.0 #FROM docker.io/pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel / RUN mkdir -p /workspace && chmod -R 777 /workspace
+docker build --network=host -t ${IMAGENAME}:${VERSION_ID} -f unified-ai/Dockerfile .
 ```
 See an example of output logs for the command `docker images`:
 ```bash
