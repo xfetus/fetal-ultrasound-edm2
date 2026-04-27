@@ -2,13 +2,6 @@
 FROM docker.io/pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel
 
 RUN mkdir -p /workspace && chmod -R 777 /workspace
+RUN mkdir -p /.cache/pip /.local && chmod -R 777 /.cache/pip /.local
+
 WORKDIR /workspace
-
-COPY requirements.txt .
-
-RUN /opt/conda/bin/python -m pip install --upgrade pip && \
-    /opt/conda/bin/python -m pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-CMD ["/opt/conda/bin/python"]
