@@ -10,8 +10,11 @@ Go to the directory containing the Dockerfile and the other relevant files, then
 ```bash
 # cd project roof path
 IMAGENAME=fetal-ultrasound-edm2-distributed-learning
-VERSION_ID=v0.0.9
-docker build --network=host -t ${IMAGENAME}:${VERSION_ID} -f ghcr/Dockerfile .
+VERSION_ID=v0.1.4
+# VERSION_ID=v0.0.0 #FROM docker.io/pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel / RUN mkdir -p /workspace && chmod -R 777 /workspace
+# VERSION_ID=v0.0.1 #FROM docker.io/pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel / RUN mkdir -p /workspace && chmod -R 777 /workspace RUN mkdir -p /.cache/pip /.local && chmod -R 777 /.cache/pip /.local
+
+docker build --network=host -t ${IMAGENAME}:${VERSION_ID} -f unified-ai/Dockerfile .
 ```
 See an example of output logs for the command `docker images`:
 ```bash
@@ -20,7 +23,7 @@ REPOSITORY                                  TAG       			IMAGE ID  CREATED   SIZ
 fetal-ultrasound-edm2-distributed-learning  v<MAJOR>.<MINOR>.<PATCH>    <>        <>        <>GB
 ```
 
-## Debuging image
+## Debuging image with their python versions
 * check python version and dependencies
 ```
 docker run --rm \
