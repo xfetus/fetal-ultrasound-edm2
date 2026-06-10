@@ -40,12 +40,16 @@ If you find this dataset useful, please cite:
 
 
 
-# FPUS23_Dataset: fetus phantom ultrasound dataset (15,728 images in 4.93Gb)
+# FPUS23_Dataset: fetus phantom ultrasound dataset (15,728 images in 5.98Gb)
 FPUS23, fetus phantom ultrasound dataset, can be used to identify (1) the correct diagnostic planes for estimating fetal biometric values, (2) fetus orientation, (3) their anatomical features, and (4) bounding boxes of the fetus phantom anatomies at 23 weeks gestation. The entire dataset is composed of 15,728 images.
 
+## Download datasets
 ```bash
+mkdir -p ~/scratch-volume && cd ~/scratch-volume
 wget -O FPUS23_Dataset.zip \
 "https://drive.usercontent.google.com/download?export=download&confirm=t&id=1LL-r2hNiP6C190UBSE4v1FFCF3OQT9N3"
+mkdir FPUS23
+unzip FPUS23_Dataset.zip -d FPUS23
 ```
 
 Prabakaran, Bharath Srinivas, Paul Hamelmann, Erik Ostrowski, and Muhammad Shafique. "FPUS23: an ultrasound fetus phantom dataset with deep neural network evaluations for fetus orientations, fetal planes, and anatomical features." IEEE Access 11 (2023): 58308-58317.
@@ -53,25 +57,16 @@ Prabakaran, Bharath Srinivas, Paul Hamelmann, Erik Ostrowski, and Muhammad Shafi
 	* google citations https://scholar.google.com/scholar?cites=4749675840285171641&as_sdt=2005&sciodt=0,5&hl=en 
 
 
+# Maternal fetal ultrasound planes from low-resource imaging settings in five African countries (451 images in 40.86 MB)
 
-# Fetal Abdominal Structures Segmentation Dataset Using Ultrasonic Images (1588 images,  1.1GB)
-```bash
-wget --content-disposition \
--O fetal_dataset.zip \
-"https://data.mendeley.com/public-files/datasets/4gcpm9dsc3/files/89e74076-ff57-4e81-9634-4fc29c6128ff/file_downloaded"
-```
-
-## References
-* https://data.mendeley.com/datasets/4gcpm9dsc3/1 
-* https://www.kaggle.com/datasets/orvile/fetal-abdominal-structures-segmentation-dataset/data
-
-
-
-# Maternal fetal ultrasound planes from low-resource imaging settings in five African countries (451 images in 42.8 MB)
+## Download datasets
 
 ```bash
+mkdir -p ~/scratch-volume && cd ~/scratch-volume
 wget -c --content-disposition \
 "https://zenodo.org/api/records/7540448/files/Zenodo_dataset.tar.xz/content"
+tar -xvf Zenodo_dataset.tar.xz 
+mv Zenodo_dataset AfricanDataset
 ```
 
 
@@ -79,6 +74,21 @@ wget -c --content-disposition \
 * Preprint: https://arxiv.org/abs/2209.09610
 * Journal article: https://www.nature.com/articles/s41598-023-29490-3
 
+# Fetal Abdominal Structures Segmentation Dataset Using Ultrasonic Images (1588 images,  1.06GB)
+
+## Download datasets
+```bash
+mkdir -p ~/scratch-volume && cd ~/scratch-volume
+wget --content-disposition \
+-O fetal_dataset.zip \
+"https://data.mendeley.com/public-files/datasets/4gcpm9dsc3/files/89e74076-ff57-4e81-9634-4fc29c6128ff/file_downloaded"
+mkdir FetalAbdominalSegmentation
+unzip fetal_dataset.zip -d FetalAbdominalSegmentation
+```
+
+## References
+* https://data.mendeley.com/datasets/4gcpm9dsc3/1 
+* https://www.kaggle.com/datasets/orvile/fetal-abdominal-structures-segmentation-dataset/data
 
 
 # Pre-trained Models
