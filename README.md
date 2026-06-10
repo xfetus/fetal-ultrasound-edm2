@@ -51,12 +51,15 @@ source .venv/bin/activate #To activate the virtual environment
 torchrun --standalone --nproc_per_node=1 train_edm2.py \
             --outdir ~/scratch-volume/FETAL_PLANES_DB/OUTPUT_DIRECTORY \
             --data ~/scratch-volume/FETAL_PLANES_DB \
+            --fpus23 ~/scratch-volume/FPUS23 \
+            --african ~/scratch-volume/AfricanDataset/Zenodo_dataset \
+            --fetal-abdomen ~/scratch-volume/FetalAbdominalSegmentation/IMAGES \
             --batch 1 \
             --preset edm2-img512-xxs \
             --batch-gpu=1
 ```
 
-where `DATASET_LOCATION` should be the root directory of the downloaded fetal planes dataset and `OUTPUT_DIRECTORY` is the location we will save `log.txt`, `stats.jsonl` and our model checkpoints (e.g. `network-snapshot-0000000-0.050.pkl`, etc ).
+where `DATASET_LOCATION` should be the root directory of the downloaded fetal planes dataset and `OUTPUT_DIRECTORY` is the location we will save `log.txt`, `stats.json` and our model checkpoints (e.g. `network-snapshot-0000000-0.050.pkl`, `network-snapshot-0000000-0.100.pkl`, etc ).
 
 ## 🖼 Generating Synthetic Images
 

@@ -63,10 +63,9 @@ Prabakaran, Bharath Srinivas, Paul Hamelmann, Erik Ostrowski, and Muhammad Shafi
 
 ```bash
 mkdir -p ~/scratch-volume && cd ~/scratch-volume
-wget -c --content-disposition \
-"https://zenodo.org/api/records/7540448/files/Zenodo_dataset.tar.xz/content"
-tar -xvf Zenodo_dataset.tar.xz 
-mv Zenodo_dataset AfricanDataset
+wget -c --content-disposition "https://zenodo.org/api/records/7540448/files/Zenodo_dataset.tar.xz/content"
+mkdir AfricanDataset
+tar -xvf Zenodo_dataset.tar.xz -C AfricanDataset
 ```
 
 
