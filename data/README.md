@@ -1,4 +1,4 @@
-# FETAL_PLANES_DB: Common maternal-fetal ultrasound images
+# FETAL_PLANES_DB: Common maternal-fetal ultrasound images (12,400 images in 2.1GB)
 
 **Burgos-Artizzu, X.P., Coronado-Gutiérrez, D., Valenzuela-Alcaraz, B. et al. Evaluation of deep convolutional neural networks for automatic classification of common maternal fetal ultrasound planes. Sci Rep 10, 10200 (2020). https://doi.org/10.1038/s41598-020-67076-5**
 ### Data Description
@@ -25,7 +25,6 @@ unzip FETAL_PLANES_ZENODO.zip && rm FETAL_PLANES_ZENODO.zip
 ```
 
 
-
 If you find this dataset useful, please cite:
 
     @article{Burgos-ArtizzuFetalPlanesDataset,
@@ -39,7 +38,50 @@ If you find this dataset useful, please cite:
     }
 
 
-## Pre-trained Models
+
+
+# FPUS23_Dataset: fetus phantom ultrasound dataset (15,728 images in 4.93Gb)
+FPUS23, fetus phantom ultrasound dataset, can be used to identify (1) the correct diagnostic planes for estimating fetal biometric values, (2) fetus orientation, (3) their anatomical features, and (4) bounding boxes of the fetus phantom anatomies at 23 weeks gestation. The entire dataset is composed of 15,728 images.
+
+```bash
+wget -O FPUS23_Dataset.zip \
+"https://drive.usercontent.google.com/download?export=download&confirm=t&id=1LL-r2hNiP6C190UBSE4v1FFCF3OQT9N3"
+```
+
+Prabakaran, Bharath Srinivas, Paul Hamelmann, Erik Ostrowski, and Muhammad Shafique. "FPUS23: an ultrasound fetus phantom dataset with deep neural network evaluations for fetus orientations, fetal planes, and anatomical features." IEEE Access 11 (2023): 58308-58317.
+	* https://github.com/bharathprabakaran/FPUS23
+	* google citations https://scholar.google.com/scholar?cites=4749675840285171641&as_sdt=2005&sciodt=0,5&hl=en 
+
+
+
+# Fetal Abdominal Structures Segmentation Dataset Using Ultrasonic Images (1588 images,  1.1GB)
+```bash
+wget --content-disposition \
+-O fetal_dataset.zip \
+"https://data.mendeley.com/public-files/datasets/4gcpm9dsc3/files/89e74076-ff57-4e81-9634-4fc29c6128ff/file_downloaded"
+```
+
+## References
+* https://data.mendeley.com/datasets/4gcpm9dsc3/1 
+* https://www.kaggle.com/datasets/orvile/fetal-abdominal-structures-segmentation-dataset/data
+
+
+
+# Maternal fetal ultrasound planes from low-resource imaging settings in five African countries (451 images in 42.8 MB)
+
+```bash
+wget -c --content-disposition \
+"https://zenodo.org/api/records/7540448/files/Zenodo_dataset.tar.xz/content"
+```
+
+
+## References
+* Preprint: https://arxiv.org/abs/2209.09610
+* Journal article: https://www.nature.com/articles/s41598-023-29490-3
+
+
+
+# Pre-trained Models
 
 ```bash
 mkdir -p ~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse && cd ~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse
