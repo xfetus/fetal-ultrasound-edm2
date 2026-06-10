@@ -54,7 +54,7 @@ unzip FPUS23_Dataset.zip -d FPUS23
 
 Prabakaran, Bharath Srinivas, Paul Hamelmann, Erik Ostrowski, and Muhammad Shafique. "FPUS23: an ultrasound fetus phantom dataset with deep neural network evaluations for fetus orientations, fetal planes, and anatomical features." IEEE Access 11 (2023): 58308-58317.
 	* https://github.com/bharathprabakaran/FPUS23
-	* google citations https://scholar.google.com/scholar?cites=4749675840285171641&as_sdt=2005&sciodt=0,5&hl=en 
+	* google citations https://scholar.google.com/scholar?cites=4749675840285171641&as_sdt=2005&sciodt=0,5&hl=en
 
 
 # Maternal fetal ultrasound planes from low-resource imaging settings in five African countries (451 images in 40.86 MB)
@@ -86,7 +86,7 @@ unzip fetal_dataset.zip -d FetalAbdominalSegmentation
 ```
 
 ## References
-* https://data.mendeley.com/datasets/4gcpm9dsc3/1 
+* https://data.mendeley.com/datasets/4gcpm9dsc3/1
 * https://www.kaggle.com/datasets/orvile/fetal-abdominal-structures-segmentation-dataset/data
 
 
