@@ -49,11 +49,11 @@ Then to train xxs, s-sized model (`edm2-img512-xxs`,  `edm2-img512-s`,) for Imag
 source .venv/bin/activate #To activate the virtual environment
 
 torchrun --standalone --nproc_per_node=1 train_edm2.py \
-            --outdir ~/scratch-volume/FETAL_PLANES_DB/OUTPUT_DIRECTORY \
-            --data ~/scratch-volume/FETAL_PLANES_DB \
-            --fpus23 ~/scratch-volume/FPUS23 \
-            --african ~/scratch-volume/AfricanDataset/Zenodo_dataset \
-            --fetal-abdomen ~/scratch-volume/FetalAbdominalSegmentation/IMAGES \
+            --outdir ~/scratch-volume/data-fetal-us-edm2/OUTPUT_DIRECTORY \
+            --data ~/scratch-volume/data-fetal-us-edm2/FETAL_PLANES_DB \
+            --fpus23 ~/scratch-volume/data-fetal-us-edm2/FPUS23 \
+            --african ~/scratch-volume/data-fetal-us-edm2/AfricanDataset/Zenodo_dataset \
+            --fetal-abdomen ~/scratch-volume/data-fetal-us-edm2/FetalAbdominalSegmentation/IMAGES \
             --batch 1 \
             --preset edm2-img512-xxs \
             --batch-gpu=1

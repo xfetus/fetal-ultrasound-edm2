@@ -19,7 +19,7 @@ Site and size
 
 
 ```bash
-mkdir -p ~/scratch-volume/FETAL_PLANES_DB && mkdir -p ~/scratch-volume/FETAL_PLANES_DB/OUTPUT_DIRECTORY && cd ~/scratch-volume/FETAL_PLANES_DB
+mkdir -p ~/scratch-volume/data-fetal-us-edm2/FETAL_PLANES_DB && cd ~/scratch-volume/data-fetal-us-edm2/FETAL_PLANES_DB
 wget -c --content-disposition https://zenodo.org/records/3904280/files/FETAL_PLANES_ZENODO.zip?download=1
 unzip FETAL_PLANES_ZENODO.zip && rm FETAL_PLANES_ZENODO.zip
 ```
@@ -45,7 +45,7 @@ FPUS23, fetus phantom ultrasound dataset, can be used to identify (1) the correc
 
 ## Download datasets
 ```bash
-mkdir -p ~/scratch-volume && cd ~/scratch-volume
+mkdir -p ~/scratch-volume/data-fetal-us-edm2 && cd ~/scratch-volume/data-fetal-us-edm2
 wget -O FPUS23_Dataset.zip \
 "https://drive.usercontent.google.com/download?export=download&confirm=t&id=1LL-r2hNiP6C190UBSE4v1FFCF3OQT9N3"
 mkdir FPUS23
@@ -62,7 +62,7 @@ Prabakaran, Bharath Srinivas, Paul Hamelmann, Erik Ostrowski, and Muhammad Shafi
 ## Download datasets
 
 ```bash
-mkdir -p ~/scratch-volume && cd ~/scratch-volume
+mkdir -p ~/scratch-volume/data-fetal-us-edm2 && cd ~/scratch-volume/data-fetal-us-edm2
 wget -c --content-disposition "https://zenodo.org/api/records/7540448/files/Zenodo_dataset.tar.xz/content"
 mkdir AfricanDataset
 tar -xvf Zenodo_dataset.tar.xz -C AfricanDataset
@@ -77,7 +77,7 @@ tar -xvf Zenodo_dataset.tar.xz -C AfricanDataset
 
 ## Download datasets
 ```bash
-mkdir -p ~/scratch-volume && cd ~/scratch-volume
+mkdir -p ~/scratch-volume/data-fetal-us-edm2 && cd ~/scratch-volume/data-fetal-us-edm2
 wget --content-disposition \
 -O fetal_dataset.zip \
 "https://data.mendeley.com/public-files/datasets/4gcpm9dsc3/files/89e74076-ff57-4e81-9634-4fc29c6128ff/file_downloaded"
@@ -90,10 +90,11 @@ unzip fetal_dataset.zip -d FetalAbdominalSegmentation
 * https://www.kaggle.com/datasets/orvile/fetal-abdominal-structures-segmentation-dataset/data
 
 
-# Pre-trained Models
+# Path setup for models
 
 ```bash
-mkdir -p ~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse && cd ~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse
+mkdir -p ~/scratch-volume/data-fetal-us-edm2/OUTPUT_DIRECTORY
+mkdir -p ~/scratch-volume/data-fetal-us-edm2/models/sd-vae-ft-mse && cd ~/scratch-volume/data-fetal-us-edm2/models/sd-vae-ft-mse
 wget -4 -O config.json https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json
 wget -4 -O diffusion_pytorch_model.safetensors https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/diffusion_pytorch_model.safetensors
 ```
