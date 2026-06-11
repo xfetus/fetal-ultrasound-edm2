@@ -1,15 +1,14 @@
 # UCL unified-ai pipelines
 
-Create jupyter notebook namespace then you can either do ghcr or scratch-volume
+Create a default notebook namespace with 2cpus and 4Gi of mem using Data Volumes `scratch-volume`
 
-## ghcr
+## Using ghcr
 Clone repo in `/home/jovyan`
 ```bash
 git clone https://github.com/xfetus/fetal-ultrasound-edm2.git
 ```
 
-## scratch-volume
-
+## Using scratch-volume
 Clone repo in `scratch-volume`
 ```bash
 git clone https://github.com/xfetus/fetal-ultrasound-edm2.git

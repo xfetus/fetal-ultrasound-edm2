@@ -50,6 +50,7 @@ wget -O FPUS23_Dataset.zip \
 "https://drive.usercontent.google.com/download?export=download&confirm=t&id=1LL-r2hNiP6C190UBSE4v1FFCF3OQT9N3"
 mkdir FPUS23
 unzip FPUS23_Dataset.zip -d FPUS23
+rm FPUS23_Dataset.zip
 ```
 
 Prabakaran, Bharath Srinivas, Paul Hamelmann, Erik Ostrowski, and Muhammad Shafique. "FPUS23: an ultrasound fetus phantom dataset with deep neural network evaluations for fetus orientations, fetal planes, and anatomical features." IEEE Access 11 (2023): 58308-58317.
@@ -66,6 +67,7 @@ mkdir -p ~/scratch-volume/data-fetal-us-edm2 && cd ~/scratch-volume/data-fetal-u
 wget -c --content-disposition "https://zenodo.org/api/records/7540448/files/Zenodo_dataset.tar.xz/content"
 mkdir AfricanDataset
 tar -xvf Zenodo_dataset.tar.xz -C AfricanDataset
+rm Zenodo_dataset.tar.xz
 ```
 
 
@@ -83,6 +85,7 @@ wget --content-disposition \
 "https://data.mendeley.com/public-files/datasets/4gcpm9dsc3/files/89e74076-ff57-4e81-9634-4fc29c6128ff/file_downloaded"
 mkdir FetalAbdominalSegmentation
 unzip fetal_dataset.zip -d FetalAbdominalSegmentation
+rm fetal_dataset.zip
 ```
 
 ## References
@@ -97,4 +100,14 @@ mkdir -p ~/scratch-volume/data-fetal-us-edm2/OUTPUT_DIRECTORY
 mkdir -p ~/scratch-volume/data-fetal-us-edm2/models/sd-vae-ft-mse && cd ~/scratch-volume/data-fetal-us-edm2/models/sd-vae-ft-mse
 wget -4 -O config.json https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json
 wget -4 -O diffusion_pytorch_model.safetensors https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/diffusion_pytorch_model.safetensors
+```
+
+* path layout in the scratch-volume of the namespace
+```bash
+drwxr-sr-x.  3 jovyan nfs-group-10320 4096 Jun 11 23:30 AfricanDataset
+drwxr-sr-x.  4 jovyan nfs-group-10320 4096 Jun 11 23:38 FetalAbdominalSegmentation
+drwxr-sr-x.  3 jovyan nfs-group-10320 4096 Jun 11 23:23 FETAL_PLANES_DB
+drwxr-sr-x.  5 jovyan nfs-group-10320 4096 Jun 11 23:28 FPUS23
+drwxr-sr-x.  3 jovyan nfs-group-10320 4096 Jun 11 23:23 models
+drwxr-sr-x.  2 jovyan nfs-group-10320 4096 Jun 11 23:29 OUTPUT_DIRECTORY
 ```
