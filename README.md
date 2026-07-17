@@ -108,3 +108,15 @@ You need to [authorize a personal access token for use with single sign-on](http
 ```bash
 git clone https://github.com/xfetus/fetal-ultrasound-edm2.git
 ```
+
+## Huggingface
+
+**Model Weights:** We also provided access to the model weights for both our large EDM2-XL mode and smaller EDM2-S model [here](https://huggingface.co/harveymannering/ultrasound-edm2). The minimal code needed to use these weight can be found in the model card and require dependancies from the [EDM2 repo](https://github.com/NVlabs/edm2) in order to run.
+
+**Generated Images:** The 30k generated images can also be found on huggingface and can be downloaded from [here](https://huggingface.co/datasets/harveymannering/ultrasound_images_diffusion). Class indexes in the dataset correspond to the following labels:
+- 0: 'Other'
+- 1: 'Maternal cervix'
+- 2: 'Fetal abdomen'
+- 3: 'Fetal brain'
+- 4: 'Fetal femur'
+- 5: 'Fetal thorax'
