@@ -89,7 +89,6 @@ bash ../c_pdflatex-pdflatex.bash
 ### 4.3 Verify Output
 
 ```bash
-cd files/
 evince main.pdf
 ```
 
@@ -124,7 +123,7 @@ Your submission package will be available as:
 zip-files/arxiv-v00.zip
 ```
 
-This file is ready for upload to arXiv. 🎉
+The compressed file is ready for upload to arXiv. 🎉
 
 
 ## 2. Submission
@@ -137,39 +136,40 @@ This file is ready for upload to arXiv. 🎉
 2. **Submission Agreement**
    Select and confirm the following:
 
-   * I certify that the above information is correct
-   * I have read and agree to the Instructions for Submission
-   * I accept the arXiv Submission Terms and Agreement
-   * I am submitting as an author of this article
-   * License: **CC BY-SA (Creative Commons Attribution-ShareAlike)**
-   * Archive and Subject Class: **Physics > Medical Physics**
+   * [ ] I certify that the above information is correct
+   * [ ] I have read and agree to the Instructions for Submission
+   * [ ] I am submitting as an author of this article
+   * [ ] License: **CC BY-SA (Creative Commons Attribution-ShareAlike)**
+   * Archive and Subject Class: **Computer Science > Artificial Intelligence**
    * Click **Continue**
 
 3. **Upload Files**
 
    * Upload your file (e.g., `arxiv-v00.zip`)
-   * Click **Continue → Process Files**
+   * Click **Check Files**
+   * Select Compiler: **pdflatex/Tex Live 2025**
+   * Select Top-Level Tex: **main.tex**
+   * Click **Accept and Continue**
    * Wait until the status shows: **“Processing Status: Succeeded!”**
+   * Submission Processing [Preview your PDFContinue] **Submission processed OK**
    * Click **Continue**
 
 4. **Enter Metadata**
 
    * **Title**: Enter your paper title
    * **Authors**: Use full names (Firstname Lastname).
-
      * Do not use “et al.”
      * Separate authors with commas or “and”
    * **Abstract**: Paste your abstract
-   * **Comments**: e.g., *N pages, N figures*
+   * **Comments**: e.g., *N pages, N figures, conference or other essential info.*
    * Click **Save and Continue**
 
 5. **Select Categories**
-
-   * Primary: **Medical Physics (physics.med-ph)**
+	     
+   * Primary: **Computer Vision and Pattern Recognition (cs.CV)**
    * Optional additional categories (adjust as needed):
-
-     * Artificial Intelligence (cs.AI) — remove if not relevant
-     * Hardware Architecture (cs.AR) — remove if not relevant
+     * Artificial Intelligence (cs.AI)
+     * Medical Physics (physics.med-ph) — remove if not relevant
      * Machine Learning (cs.LG) — remove if not relevant
      * Image and Video Processing (eess.IV)
 
