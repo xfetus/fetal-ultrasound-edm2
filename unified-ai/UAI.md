@@ -24,13 +24,32 @@ Clone repo in `scratch-volume`
 git clone https://github.com/xfetus/fetal-ultrasound-edm2.git
 ```
 
-## Troubleshooting
+## kubectl Troubleshooting
 
+### List Jobs
+```bash
+kubectl get jobs
+```
+
+### Describe a Job.
+```bash
+kubectl describe job <job-name>
+```
+
+### Delete a Job.
+```bash
+kubectl delete job <job-name>
+```
+
+### Delete all jobs
+```bash
+kubectl delete jobs --all
+```
 
 ### Get the training runtime config
 
 Get `clustertrainingruntime` and save it to [torch-distributed.yaml](torch-distributed.yaml)
-```
+```bash
 kubectl get clustertrainingruntime torch-distributed -o yaml > torch-distributed.yaml
 ```
 
