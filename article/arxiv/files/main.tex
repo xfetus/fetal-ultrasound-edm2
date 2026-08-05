@@ -157,7 +157,7 @@ Including these datasets allows twice as many training steps and reduces validat
   Representative fetal ultrasound images from real data, Tian et al. \cite{tian2025enhancing}, and our proposed high-resolution ($512 \times 512$) diffusion-based synthesis approach.
   Higher resolution image at our repository  \url{https://github.com/xfetus/fetal-ultrasound-edm2}.
   }
-  \includegraphics[width=0.4\linewidth]{image_grid.png}\label
+  \includegraphics[width=1.0\linewidth]{image_grid.png}\label
   {fig:gen_images}
 
 \vspace{-4mm}
@@ -226,7 +226,7 @@ An experienced fetal ultrasound clinician (10 years’ expertise) evaluated 100 
 
 
 
-\vspace{-12mm}
+% \vspace{-12mm}
 \section{Conclusions and future work}
 We present an EDM2-based foundational model for high-resolution fetal ultrasound synthesis using open datasets, improving image quality and downstream classification performance. The model generates 512×512 images, surpassing prior 256×256 approaches. Clinical evaluation of 100 images yielded a mean score of 2.67/5, with real images rated higher than synthetic outputs. All code and models are released, with future work targeting scalable foundation models for low-resource healthcare and further comparison of diffusion architectures.
 
@@ -259,8 +259,89 @@ We present an EDM2-based foundational model for high-resolution fetal ultrasound
 % References will then be sorted and formatted in the correct style.
 %
 \bibliographystyle{splncs04}
-%\bibliography{mybibliography}%%%OVERLEAF
-\bibliography{../../latex/mybibliography}%%%GITHUB/ARXIV
+% \bibliography{mybibliography}%%%OVERLEAF
+\bibliography{../../latex/mybibliography}%%%GITHUB
 % \input{main.bbl}%%%ARXIV
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix A. Validation curves}
+
+Figure~\ref{fig:val_curves} presents the validation loss curves for our UltrasoundEDM2 models on the FETAL PLANES DB dataset. 
+As model capacity increases from the Small (S) to the Extra Large (XL) configuration, the optimal validation loss consistently improves, demonstrating the benefits of scaling the network architecture.
+
+Training with additional datasets—including the FPU23 dataset, a fetal abdominal structures segmentation dataset, and an African low-resource ultrasound dataset—further improves performance. 
+The increased diversity of training data enables the models to train for longer before convergence, ultimately achieving a lower validation loss than models trained on the FETAL PLANES DB alone.
+
+\begin{figure}[htbp]
+\centering
+\caption{
+Validation loss curves for the UltrasoundEDM2 diffusion models. 
+Larger model variants and additional training data consistently improve optimisation performance and final validation loss.
+}
+\includegraphics[width=1.0\linewidth]{validation_curves.png}
+\label{fig:val_curves}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix B. Ultrasound image evaluation survey}
+
+To support an independent assessment of image realism and clinical quality, we developed a lightweight web-based survey hosted using GitHub Pages. 
+The survey enables clinicians and researchers to distinguish between real and synthetic ultrasound images while simultaneously rating overall image quality.
+See Figure \ref{fig:survey} that illustrates landing page and image evaluation interface. 
+
+\subsection{Survey design}
+
+A fixed set of 100 images is sampled from the 30,000-image dataset using a deterministic random seed, ensuring that every participant evaluates the same images and enabling fully reproducible analysis.
+
+Images are streamed directly from the Hugging Face Datasets Server API at runtime:
+
+\url{https://huggingface.co/datasets/harveymannering/ultrasound_images_diffusion}
+
+No local image hosting is required. Images are presented without labels and displayed in a randomised order to minimise potential bias.
+
+\subsection{Evaluation protocol}
+
+For each image, participants answer two questions:
+
+\begin{itemize}
+    \item \textbf{Q1.} Is the image \emph{Real} or \emph{Synthetic}?
+    \item \textbf{Q2.} How would you rate the overall image quality on a five-point scale (Poor--Excellent)?
+\end{itemize}
+
+Once both responses have been recorded, the survey automatically advances to the next image. Progress is continuously saved in local browser storage, allowing participants to resume the survey after refreshing the page. Responses can be exported at any stage as a CSV file containing the image identifier, dataset index, real/synthetic classification, and quality rating.
+
+\begin{figure}[htbp]
+\centering
+\caption{
+GitHub Pages interface for the ultrasound image evaluation survey, available at \url{https://xfetus.github.io/fetal-ultrasound-edm2-survey-2026/}. 
+The survey source code is publicly available at \url{https://github.com/xfetus/fetal-ultrasound-edm2-survey-2026}. 
+The left panel shows the survey landing page, while the right panel illustrates the image evaluation interface used to answer the real-versus-synthetic classification and image quality assessment questions.
+}
+\includegraphics[width=1.0\linewidth]{survey.png}
+\label{fig:survey}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix C. Open-access and reproducible research resources}
+
+To promote transparency and reproducibility, all resources associated with this work are openly available. 
+The project repository includes the source code, trained models, documentation, data processing scripts, and links to the accompanying preprint and related resources required to reproduce the experiments presented in this paper.
+
+Project repository:
+
+\url{https://github.com/xfetus/fetal-ultrasound-edm2}
+
+Pre-trained model weights are publicly available via Hugging Face:
+
+\url{https://huggingface.co/harveymannering/ultrasound-edm2}
+
+
 
 \end{document}
