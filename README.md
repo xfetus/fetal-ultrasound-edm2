@@ -120,3 +120,26 @@ git clone https://github.com/xfetus/fetal-ultrasound-edm2.git
 - 3: 'Fetal brain'
 - 4: 'Fetal femur'
 - 5: 'Fetal thorax'
+
+
+## :scroll: Article
+> Harvey Mannering, Yilin Zhang, Ziao Liu, Zhiwu Huang, Jacqueline Matthew, Miguel Xochicale. **"A Foundational EDM2-Based Generative Model for High-Resolution Synthetic Fetal Ultrasound Imaging from Open Datasets."** arXiv preprint arXiv:2608.05471 (2026). Published in the 30th UK Conference on Medical Image Understanding and Analysis, MIUA'26 Short paper track. Dublin, Irland. 20th - 22nd July 2026. [[Github-repository]](https://github.com/xfetus/fetal-ultrasound-edm2); 
+[[arXiv-preprint]](https://arxiv.org/abs/2608.05471); 
+
+<details>
+
+<summary>See bibtex to cite paper:</summary>
+
+```
+@misc{mannering2026foundationaledm2basedgenerativemodel,
+      title={A Foundational EDM2-Based Generative Model for High-Resolution Synthetic Fetal Ultrasound Imaging from Open Datasets}, 
+      author={Harvey Mannering and Yilin Zhang and Ziao Liu and Zhiwu Huang and Jacqueline Matthew and Miguel Xochicale},
+      year={2026},
+      eprint={2608.05471},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV},
+      url={https://arxiv.org/abs/2608.05471}, 
+}
+``` 
+
+</details>

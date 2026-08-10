@@ -1,0 +1,152 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{Alsharid2025}
+Alsharid, M., Guo, X., Men, Q., Saha, P., Mishra, D., Ahuja, R., Ouyang, C.,
+  Noble, J.A.: On the public dissemination and open sourcing of ultrasound
+  resources, datasets and deep learning models. npj Digital Medicine
+  \textbf{8}(1), ~777 (Nov 2025). \doi{10.1038/s41746-025-02162-4},
+  \url{https://doi.org/10.1038/s41746-025-02162-4}
+
+\bibitem{Arjemandi2026}
+Arjemandi, M., Hassan, S., Wang, H., Valappil, S., Yaqub, M.: Difusal:
+  Diffusion-based fetal ultrasound synthesis with active learning. In: Ni, D.,
+  Noble, A., Huang, R., Xue, W. (eds.) Simplifying Medical Ultrasound. pp.
+  130--139. Springer Nature Switzerland, Cham (2026)
+
+\bibitem{burgos2020evaluation}
+Burgos-Artizzu, X.P., Coronado-Guti{\'e}rrez, D., Valenzuela-Alcaraz, B.,
+  Bonet-Carne, E., Eixarch, E., Crispi, F., Gratac{\'o}s, E.: Evaluation of
+  deep convolutional neural networks for automatic classification of common
+  maternal fetal ultrasound planes. Scientific Reports  \textbf{10}(1),  10200
+  (2020)
+
+\bibitem{da2023fetal}
+Da~Correggio, K.S., Galluzzo, R.N., Santos, L.O., Barroso, F.S.M., Chaves,
+  T.Z.L., Onofre, A.S.C., von Wangenheim, A.: Fetal abdominal structures
+  segmentation dataset using ultrasonic images. Mendeley Data  \textbf{1}, ~1
+  (2023)
+
+\bibitem{deng2009imagenet}
+Deng, J., Dong, W., Socher, R., Li, L.J., Li, K., Fei-Fei, L.: Imagenet: A
+  large-scale hierarchical image database. In: 2009 IEEE conference on computer
+  vision and pattern recognition. pp. 248--255. Ieee (2009)
+
+\bibitem{freiche2025ultrasound}
+Freiche, B., El-Khoury, A., Nasiri-Sarvi, A., Hosseini, M.S., Garcia, D.,
+  Basarab, A., Boily, M., Rivaz, H.: Ultrasound image generation using latent
+  diffusion models. In: Medical Imaging 2025: Ultrasonic Imaging and
+  Tomography. vol. 13412, pp. 287--292. SPIE (2025)
+
+\bibitem{Goodfellow2014}
+Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair,
+  S., Courville, A., Bengio, Y.: Generative adversarial nets. Advances in
+  Neural Information Processing Systems  \textbf{27} (2014),
+  \url{https://proceedings.neurips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf}
+
+\bibitem{he2016deep}
+He, K., Zhang, X., Ren, S., Sun, J.: Deep residual learning for image
+  recognition. In: Proceedings of the IEEE conference on computer vision and
+  pattern recognition. pp. 770--778 (2016)
+
+\bibitem{heusel2017gans}
+Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., Hochreiter, S.: Gans
+  trained by a two time-scale update rule converge to a local nash equilibrium.
+  Advances in neural information processing systems  \textbf{30} (2017)
+
+\bibitem{ho2020_neurips}
+Ho, J., Jain, A., Abbeel, P.: Denoising diffusion probabilistic models. In:
+  Larochelle, H., Ranzato, M., Hadsell, R., Balcan, M., Lin, H. (eds.) Advances
+  in Neural Information Processing Systems. vol.~33, pp. 6840--6851. Curran
+  Associates, Inc. (2020)
+
+\bibitem{huang2017densely}
+Huang, G., Liu, Z., Van Der~Maaten, L., Weinberger, K.Q.: Densely connected
+  convolutional networks. In: Proceedings of the IEEE conference on computer
+  vision and pattern recognition. pp. 4700--4708 (2017)
+
+\bibitem{IBRAHIM2025}
+Ibrahim, M., Khalil, Y.A., Amirrajab, S., Sun, C., Breeuwer, M., Pluim, J.,
+  Elen, B., Ertaylan, G., Dumontier, M.: Generative ai for synthetic data
+  across multiple medical modalities: A systematic review of recent
+  developments and challenges. Computers in Biology and Medicine  \textbf{189},
+   109834 (2025). \doi{https://doi.org/10.1016/j.compbiomed.2025.109834},
+  \url{https://www.sciencedirect.com/science/article/pii/S0010482525001842}
+
+\bibitem{iskandar2023towards}
+Iskandar, M., Mannering, H., Sun, Z., Matthew, J., Kerdegari, H., Peralta, L.,
+  Xochicale, M.: Towards realistic ultrasound fetal brain imaging synthesis.
+  arXiv preprint arXiv:2304.03941  (2023)
+
+\bibitem{karras2024guiding}
+Karras, T., Aittala, M., Kynk{\"a}{\"a}nniemi, T., Lehtinen, J., Aila, T.,
+  Laine, S.: Guiding a diffusion model with a bad version of itself. Advances
+  in Neural Information Processing Systems  \textbf{37},  52996--53021 (2024)
+
+\bibitem{karras2024analyzing}
+Karras, T., Aittala, M., Lehtinen, J., Hellsten, J., Aila, T., Laine, S.:
+  Analyzing and improving the training dynamics of diffusion models. In:
+  Proceedings of the IEEE/CVF conference on computer vision and pattern
+  recognition. pp. 24174--24184 (2024)
+
+\bibitem{kingma2013auto}
+Kingma, D.P., Welling, M.: Auto-encoding variational bayes. arXiv preprint
+  arXiv:1312.6114  (2013)
+
+\bibitem{kurjak2007useful}
+Kurjak, A., Miskovic, B., Andonotopo, W., Stanojevic, M., Azumendi, G., Vrcic,
+  H.: How useful is 3d and 4d ultrasound in perinatal medicine? Journal of
+  perinatal medicine  \textbf{35}(1) (2007)
+
+\bibitem{lipman2022flow}
+Lipman, Y., Chen, R.T., Ben-Hamu, H., Nickel, M., Le, M.: Flow matching for
+  generative modeling. arXiv preprint arXiv:2210.02747  (2022)
+
+\bibitem{prabakaran2023fpus23}
+Prabakaran, B.S., Hamelmann, P., Ostrowski, E., Shafique, M.: Fpus23: an
+  ultrasound fetus phantom dataset with deep neural network evaluations for
+  fetus orientations, fetal planes, and anatomical features. IEEE Access
+  \textbf{11},  58308--58317 (2023)
+
+\bibitem{rombach2022high}
+Rombach, R., Blattmann, A., Lorenz, D., Esser, P., Ommer, B.: High-resolution
+  image synthesis with latent diffusion models. In: Proceedings of the IEEE/CVF
+  conference on computer vision and pattern recognition. pp. 10684--10695
+  (2022)
+
+\bibitem{sendra2023generalisability}
+Sendra-Balcells, C., Campello, V.M., Torrents-Barrena, J., Ahmed, Y.A.,
+  Elattar, M., Ohene-Botwe, B., Nyangulu, P., Stones, W., Ammar, M., Benamer,
+  L.N., et~al.: Generalisability of fetal ultrasound deep learning models to
+  low-resource imaging settings in five african countries. Scientific reports
+  \textbf{13}(1), ~2728 (2023)
+
+\bibitem{tian2025enhancing}
+Tian, Y., Ucurum, E., Han, X., Young, R., Chatwin, C., Birch, P.: Enhancing
+  fetal plane classification accuracy with data augmentation using diffusion
+  models. IET Image Processing  \textbf{19}(1),  e70151 (2025)
+
+\bibitem{jcm13185626}
+Weichert, J., Scharf, J.L.: Advancements in artificial intelligence for fetal
+  neurosonography: A comprehensive review. Journal of Clinical Medicine
+  \textbf{13}(18) (2024). \doi{10.3390/jcm13185626},
+  \url{https://www.mdpi.com/2077-0383/13/18/5626}
+
+\bibitem{yan2018generation}
+Yan, Y., Lee, H., Somer, E., Grau, V.: Generation of amyloid pet images via
+  conditional adversarial training for predicting progression to alzheimer’s
+  disease. In: International Workshop on PRedictive Intelligence In MEdicine.
+  pp. 26--33. Springer (2018)
+
+\bibitem{yue2024medmamba}
+Yue, Y., Li, Z.: Medmamba: Vision mamba for medical image classification. arXiv
+  preprint arXiv:2403.03849  (2024)
+
+\bibitem{zhang2023adding}
+Zhang, L., Rao, A., Agrawala, M.: Adding conditional control to text-to-image
+  diffusion models. In: Proceedings of the IEEE/CVF international conference on
+  computer vision. pp. 3836--3847 (2023)
+
+\end{thebibliography}
