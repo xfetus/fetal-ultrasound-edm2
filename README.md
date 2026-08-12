@@ -66,8 +66,8 @@ Once our model is trained we generate 5k image per class. This can be done using
 for class_idx in 0 1 2 3 4 5; do
         python generate_images.py \
                 --preset=edm2-img512-s-guid-fid \
-                --net_ckpt=./OUTPUT_DIRECTORY/training-state-0008519.pt \
-                --gnet_ckpt=./OUTPUT_DIRECTORY/training-state-0001310.pt \
+                --net_ckpt=./OUTPUT_DIRECTORY/training-state-xxxxxxx.pt \
+                --gnet_ckpt=./OUTPUT_DIRECTORY/training-state-yyyyyyy.pt \
                 --outdir=./OUTPUT_DIRECTORY/diffusion_samples_FETAL_cond_${class_idx} \
                 --guidance 1.5 \
                 --seeds=0-5000 \
@@ -75,7 +75,7 @@ for class_idx in 0 1 2 3 4 5; do
 done
 ```
 
-Generation require two network checkpoints (the first should be trained for longer than the second). In this example, we have set the first model to `training-state-0008519.pt` and the second model to `training-state-0001310.pt`, but whatever checkpoints can be used here, just make sure the `net_ckpt` has been trained for longer. The `guidance` flag controls the strength of the autoguidance and may need to be tuned for optimal performance. The `outdir` flag is where the generated images will be saved.
+Generation require two network checkpoints (the first should be trained for longer than the second). In this example, the checkpoints `training-state-xxxxxxx.pt` and `training-state-yyyyyyy.pt` contain the weight of the diffusion models, with xxxxxxx and yyyyyyy corresponding to the number of training steps. In our result we set the first model to `training-state-0008519.pt` and the second model to `training-state-0001310.pt`, but whatever checkpoints can be used here, just make sure the `net_ckpt` has been trained for longer. The `guidance` flag controls the strength of the autoguidance and may need to be tuned for optimal performance. The `outdir` flag is where the generated images will be saved.
 
 ## 📊 Evaluating Model Performance (FID)
 

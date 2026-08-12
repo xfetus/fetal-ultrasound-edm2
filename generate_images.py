@@ -290,6 +290,8 @@ class StackedRandomGenerator:
 def generate_images(
     net,  # Main network. Path, URL, or torch.nn.Module.
     gnet=None,  # Guiding network. None = same as main network.
+    net_checkpoint=None,  # Path to main network training-state checkpoint (.pt).
+    gnet_checkpoint=None,  # Path to guidance network training-state checkpoint (.pt).
     encoder=None,  # Instance of training.encoders.Encoder. None = load from network pickle.
     outdir=None,  # Where to save the output images. None = do not save.
     subdirs=False,  # Create subdirectory for every 1000 seeds?
@@ -335,11 +337,9 @@ def generate_images(
     net = dnnlib.util.construct_class_by_name(**network_kwargs, **interface_kwargs).to(
         device
     )
-    ckpt = torch.load(
-        "/scratch/hgm1g14/SpanishDataset/output_dir_s_with_flip/training-state-0001310.pt",
-        map_location="cpu",
-        weights_only=False,
-    )
+    if net_checkpoint is None:
+        raise ValueError("Please specify --net_checkpoint")
+    ckpt = torch.load(net_checkpoint, map_location="cpu", weights_only=False)
     # print(ckpt['ema']['emas'])
     # net.load_state_dict(ckpt['net'])
     net.load_state_dict(ckpt["ema"]["emas"][0])
@@ -364,11 +364,9 @@ def generate_images(
     gnet = dnnlib.util.construct_class_by_name(**network_kwargs, **interface_kwargs).to(
         device
     )
-    ckpt = torch.load(
-        "/scratch/hgm1g14/SpanishDataset/output_dir_s_with_flip/training-state-0008519.pt",
-        map_location="cpu",
-        weights_only=False,
-    )
+    if gnet_checkpoint is None:
+        raise ValueError("Please specify --gnet_checkpoint")
+    ckpt = torch.load(gnet_checkpoint, map_location="cpu", weights_only=False)
     # print(ckpt['ema']['emas'])
     # gnet.load_state_dict(ckpt['net'])
     gnet.load_state_dict(ckpt["ema"]["emas"][0])
@@ -624,6 +622,20 @@ def parse_int_list(s):
     type=float,
     default=1,
     show_default=True,
+)
+@click.option(
+    "--net_checkpoint",
+    help="Path to main network training-state checkpoint (.pt)",
+    metavar="PATH",
+    type=str,
+    default=None,
+)
+@click.option(
+    "--gnet_checkpoint",
+    help="Path to guidance network training-state checkpoint (.pt)",
+    metavar="PATH",
+    type=str,
+    default=None,
 )
 def cmdline(preset, **opts):
     """Generate random images using the given model.
