@@ -273,7 +273,7 @@ def print_module_summary(module, inputs, max_nesting=3, skip_redundant=True):
     hooks += [mod.register_forward_hook(post_hook) for mod in module.modules()]
 
     # Run module.
-    outputs = module(*inputs)
+    outputs = module(*inputs)  # noqa: F841
     for hook in hooks:
         hook.remove()
 
