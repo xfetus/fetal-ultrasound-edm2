@@ -162,7 +162,7 @@ class StabilityVAEEncoder(Encoder):
 
 
 def load_stability_vae(
-    vae_path="~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse",
+    vae_path="~/scratch-volume/data-fetal-us-edm2/models/sd-vae-ft-mse",
     vae_name="stabilityai/sd-vae-ft-mse",
     device=torch.device("cpu"),
 ):

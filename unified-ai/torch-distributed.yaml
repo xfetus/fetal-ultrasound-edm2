@@ -1,0 +1,34 @@
+apiVersion: trainer.kubeflow.org/v1alpha1
+kind: ClusterTrainingRuntime
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: kubeflow:trainer.kubeflow.org/ClusterTrainingRuntime:kubeflow/torch-distributed
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"trainer.kubeflow.org/v1alpha1","kind":"ClusterTrainingRuntime","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"kubeflow:trainer.kubeflow.org/ClusterTrainingRuntime:kubeflow/torch-distributed"},"labels":{"trainer.kubeflow.org/framework":"torch"},"name":"torch-distributed"},"spec":{"mlPolicy":{"numNodes":1,"torch":{}},"template":{"spec":{"replicatedJobs":[{"name":"node","template":{"spec":{"template":{"spec":{"containers":[{"image":"ghcr.io/ucl-arc-unified-ai/kubeflow-trainer-images-torch:v1.0.0","name":"node"}]}}}}}]}}}}
+  creationTimestamp: "2026-04-13T14:39:34Z"
+  finalizers:
+  - trainer.kubeflow.org/resource-in-use
+  generation: 5
+  labels:
+    trainer.kubeflow.org/framework: torch
+  name: torch-distributed
+  resourceVersion: "243746366"
+  uid: da080463-5904-4a66-8e78-e581a02a0d1f
+spec:
+  mlPolicy:
+    numNodes: 1
+    torch: {}
+  template:
+    metadata: {}
+    spec:
+      replicatedJobs:
+      - groupName: default
+        name: node
+        replicas: 1
+        template:
+          spec:
+            template:
+              spec:
+                containers:
+                - image: ghcr.io/ucl-arc-unified-ai/kubeflow-trainer-images-torch:v1.0.0
+                  name: node
