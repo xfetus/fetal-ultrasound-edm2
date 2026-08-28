@@ -79,7 +79,7 @@ def hook_torch_ops():
         query, key, value, attn_mask=None, dropout_p=0.0, is_causal=False
     ):
         assert dropout_p == 0.0, "unimplemented"
-        assert is_causal == False, "unimplemented"
+        assert is_causal is False, "unimplemented"
         assert attn_mask is None, "unimplemented"
         attn_weight = torch.softmax(
             (query @ key.transpose(-2, -1) / np.sqrt(query.size(-1))), dim=-1

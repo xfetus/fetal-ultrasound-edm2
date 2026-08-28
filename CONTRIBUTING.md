@@ -104,4 +104,3 @@ git branch --merged | grep -v '\*\|master\|main\|develop' | xargs -n 1 git branc
 #Remote git clear
 git branch -r --merged | grep -v '\*\|master\|main\|develop' | sed 's/origin\///' | xargs -n 1 git push --delete origin
 ```
-

@@ -60,5 +60,3 @@ Check quota usage with clusterqueue. Current usage is shown at the bottom, under
 ```bash
 kubectl describe clusterqueue dev-shared
 ```
-
-

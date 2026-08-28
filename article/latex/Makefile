@@ -23,5 +23,3 @@ mostlyclean:
 clean: mostlyclean
 	$(LATEXMK) -silent -c
 	$(RM) $(PROJNAME).pdf $(PROJNAME).bbl *.nav *.snm
-
-

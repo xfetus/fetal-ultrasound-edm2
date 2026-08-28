@@ -87,8 +87,13 @@ def power_function_beta(std, t_next, t_delta):
 def solve_posthoc_coefficients(in_ofs, in_std, out_ofs, out_std):  # => [in, out]
     in_ofs, in_std = np.broadcast_arrays(in_ofs, in_std)
     out_ofs, out_std = np.broadcast_arrays(out_ofs, out_std)
-    rv = lambda x: np.float64(x).reshape(-1, 1)
-    cv = lambda x: np.float64(x).reshape(1, -1)
+
+    def rv(x):
+        return np.float64(x).reshape(-1, 1)
+
+    def cv(x):
+        return np.float64(x).reshape(1, -1)
+
     A = power_function_correlation(rv(in_ofs), rv(in_std), cv(in_ofs), cv(in_std))
     B = power_function_correlation(rv(in_ofs), rv(in_std), cv(out_ofs), cv(out_std))
     X = np.linalg.solve(A, B)

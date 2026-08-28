@@ -84,7 +84,7 @@ class Dataset(torch.utils.data.Dataset):
     def __del__(self):
         try:
             self.close()
-        except:
+        except Exception:
             pass
 
     def __len__(self):

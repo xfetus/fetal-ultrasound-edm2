@@ -165,7 +165,7 @@ The compressed file is ready for upload to arXiv. 🎉
    * Click **Save and Continue**
 
 5. **Select Categories**
-	     
+
    * Primary: **Computer Vision and Pattern Recognition (cs.CV)**
    * Optional additional categories (adjust as needed):
      * Artificial Intelligence (cs.AI)
