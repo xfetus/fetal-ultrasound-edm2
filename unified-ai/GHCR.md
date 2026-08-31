@@ -7,15 +7,45 @@ This registry allows you to store, manage, and version Docker images directly th
 
 ## Build Dockerfile container
 Go to the directory containing the Dockerfile and the other relevant files, then define the following environment variables in the terminal to help build the Docker images.
+
+### SPEED
 ```bash
 # cd project roof path
 IMAGENAME=fetal-ultrasound-edm2-distributed-learning
-VERSION_ID=v0.1.4
-# VERSION_ID=v0.0.0 #FROM docker.io/pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel / RUN mkdir -p /workspace && chmod -R 777 /workspace
-# VERSION_ID=v0.0.1 #FROM docker.io/pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel / RUN mkdir -p /workspace && chmod -R 777 /workspace RUN mkdir -p /.cache/pip /.local && chmod -R 777 /.cache/pip /.local
+VERSION_ID=v0.0.11
 
-docker build --network=host -t ${IMAGENAME}:${VERSION_ID} -f unified-ai/Dockerfile .
+docker build \
+  --network=host \
+  --build-arg BUILD_DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+  --build-arg VCS_REF="$(git rev-parse --short HEAD)" \
+  --build-arg IMAGE_VERSION=${VERSION_ID} \
+  -t ${IMAGENAME}:${VERSION_ID} \
+  -f unified-ai/Dockerfile-scratch-volume .
+
 ```
+See an example of output logs for the command `docker images`:
+```bash
+#docker images
+REPOSITORY                                  TAG       			IMAGE ID  CREATED   SIZE
+fetal-ultrasound-edm2-distributed-learning  v<MAJOR>.<MINOR>.<PATCH>    <>        <>        <>GB
+```
+
+### STRUCTURED
+```bash
+# cd project roof path
+IMAGENAME=fetal-ultrasound-edm2-distributed-learning
+VERSION_ID=v0.1.41
+
+docker build \
+  --network=host \
+  --build-arg BUILD_DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+  --build-arg VCS_REF="$(git rev-parse --short HEAD)" \
+  --build-arg IMAGE_VERSION=${VERSION_ID} \
+  -t ${IMAGENAME}:${VERSION_ID} \
+  -f unified-ai/Dockerfile-requirements .
+
+```
+
 See an example of output logs for the command `docker images`:
 ```bash
 #docker images
@@ -70,8 +100,14 @@ docker tag ${IMAGENAME}:${VERSION_ID} ghcr.io/${GITHUB_ORG}/${PROJECT_NAME}/${IM
 Pushing container images to GitHub container registry
 ```bash
 docker push ghcr.io/${GITHUB_ORG}/${PROJECT_NAME}/${IMAGENAME}:${VERSION_ID}
+
 ```
 Go to packages `https://github.com/orgs/${GITHUB_ORG}/packages` and in `package settings` at the Danger Zone, change visibility to public.
+
+* Docker pull
+```bash
+docker pull ghcr.io/${GITHUB_ORG}/${PROJECT_NAME}/${IMAGENAME}:${VERSION_ID}
+```
 
 
 ## GHCR package fetal-ultrasound-edm2/fetal-ultrasound-edm2-distributed-learning

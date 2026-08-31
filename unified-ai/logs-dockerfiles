@@ -1,0 +1,42 @@
+# Raw logs from dockerfile builts
+
+## See GHCR versions
+
+https://github.com/xfetus/fetal-ultrasound-edm2/pkgs/container/fetal-ultrasound-edm2%2Ffetal-ultrasound-edm2-distributed-learning/versions
+
+## Built versions
+
+###v0.1.41
+* just adds labels
+
+###v0.0.11
+* just adds labels
+
+
+###v.0.1.3
+* with ENV PYTHONUNBUFFERED=1 in dockerfile
+
+###v.0.1.2
+* with ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 in dockerfile
+
+###v.0.1.1
+* removed ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 in dockerfile
+
+###v0.0.1 
+```yaml
+# syntax=docker/dockerfile:1.7
+FROM docker.io/pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel
+
+RUN mkdir -p /workspace && chmod -R 777 /workspace
+RUN mkdir -p /.cache/pip /.local && chmod -R 777 /.cache/pip /.local
+
+WORKDIR /workspace
+```
+
+
+###v0.0.0
+```yaml
+FROM docker.io/pytorch/pytorch:2.9.1-cuda12.8-cudnn9-devel
+RUN mkdir -p /workspace && chmod -R 777 /workspace
+```
+
