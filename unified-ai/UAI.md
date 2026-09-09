@@ -35,6 +35,9 @@ kubectl get trainjobs,jobs,pods
 ### describe train jobs
 ```bash
 kubectl describe trainjob <job-name>
+# Type: Suspended is just the label on the row. 
+# Status: False means the answer to "is it suspended?" is no. 
+# The Reason: Resumed and the Jobs Status below it (Active: 1, Ready: 1, Suspended: 0) confirm it
 ```
 
 ### See tail of the generated log file
@@ -52,7 +55,7 @@ kubectl get jobs
 kubectl describe job <job-name>
 ```
 
-### Get traijobs
+### Get trainjobs
 ```bash
 kubectl get trainjobs
 ```
