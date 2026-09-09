@@ -90,3 +90,9 @@ Check quota usage with clusterqueue. Current usage is shown at the bottom, under
 ```bash
 kubectl describe clusterqueue dev-shared
 ```
+
+Filter flavoursUsage, resourceGroups, etc
+```
+kubectl get clusterqueue dev-shared -o yaml | grep -A30 'flavorsUsage:'
+kubectl get clusterqueue dev-shared -o yaml | grep -A30 'resourceGroups:'
+```
