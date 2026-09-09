@@ -26,6 +26,22 @@ git clone https://github.com/xfetus/fetal-ultrasound-edm2.git
 
 ## kubectl Troubleshooting
 
+### List trainjobs, jobs and pods
+```bash
+clear
+kubectl get trainjobs,jobs,pods
+```
+
+### describe train jobs
+```bash
+kubectl describe trainjob <job-name>
+```
+
+### See tail of the generated log file
+```bash
+clear && tail -n 50 ../data-fetal-us-edm2/OUTPUT_DIRECTORY/log.txt
+```
+
 ### List Jobs
 ```bash
 kubectl get jobs
@@ -34,6 +50,17 @@ kubectl get jobs
 ### Describe a Job.
 ```bash
 kubectl describe job <job-name>
+```
+
+### Get traijobs
+```bash
+kubectl get trainjobs
+```
+
+### Delete trainjobs
+```bash
+kubectl delete trainjob <job-name>
+kubectl delete trainjobs --all
 ```
 
 ### Delete a Job.
