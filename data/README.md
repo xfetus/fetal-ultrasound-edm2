@@ -100,6 +100,11 @@ mkdir -p ~/scratch-volume/data-fetal-us-edm2/OUTPUT_DIRECTORY
 mkdir -p ~/scratch-volume/data-fetal-us-edm2/models/sd-vae-ft-mse && cd ~/scratch-volume/data-fetal-us-edm2/models/sd-vae-ft-mse
 wget -4 -O config.json https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json
 wget -4 -O diffusion_pytorch_model.safetensors https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/diffusion_pytorch_model.safetensors
+#
+#due to hard-coded `vae_path`: training/encoders.py:L92 > vae_path="~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse",  # Local path to VAE files.
+mkdir -p ~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse && cd ~/scratch-volume/FETAL_PLANES_DB/models/sd-vae-ft-mse
+wget -4 -O config.json https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json
+wget -4 -O diffusion_pytorch_model.safetensors https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/diffusion_pytorch_model.safetensors
 ```
 
 * path layout in the scratch-volume of the namespace
