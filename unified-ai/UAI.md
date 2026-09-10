@@ -26,6 +26,25 @@ git clone https://github.com/xfetus/fetal-ultrasound-edm2.git
 
 ## kubectl Troubleshooting
 
+### List trainjobs, jobs and pods
+```bash
+clear
+kubectl get trainjobs,jobs,pods
+```
+
+### describe train jobs
+```bash
+kubectl describe trainjob <job-name>
+# Type: Suspended is just the label on the row. 
+# Status: False means the answer to "is it suspended?" is no. 
+# The Reason: Resumed and the Jobs Status below it (Active: 1, Ready: 1, Suspended: 0) confirm it
+```
+
+### See tail of the generated log file
+```bash
+clear && tail -n 50 ../data-fetal-us-edm2/OUTPUT_DIRECTORY/log.txt
+```
+
 ### List Jobs
 ```bash
 kubectl get jobs
@@ -34,6 +53,17 @@ kubectl get jobs
 ### Describe a Job.
 ```bash
 kubectl describe job <job-name>
+```
+
+### Get trainjobs
+```bash
+kubectl get trainjobs
+```
+
+### Delete trainjobs
+```bash
+kubectl delete trainjob <job-name>
+kubectl delete trainjobs --all
 ```
 
 ### Delete a Job.
@@ -59,4 +89,10 @@ kubectl get clustertrainingruntime torch-distributed -o yaml > torch-distributed
 Check quota usage with clusterqueue. Current usage is shown at the bottom, under the `status.flavorsUsage` field:
 ```bash
 kubectl describe clusterqueue dev-shared
+```
+
+Filter flavoursUsage, resourceGroups, etc
+```
+kubectl get clusterqueue dev-shared -o yaml | grep -A30 'flavorsUsage:'
+kubectl get clusterqueue dev-shared -o yaml | grep -A30 'resourceGroups:'
 ```
