@@ -29,6 +29,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Only needed for cross-platform (arm64) builds
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
       - name: Set up Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -58,8 +62,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./unified-ai/Dockerfile-ci
-          platforms: linux/amd64
+          file: ./Dockerfile-ci
+          platforms: linux/amd64,linux/arm64
           # PRs build only, so forks can't push to your registry
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
