@@ -406,8 +406,12 @@ def convert(
     to exactly match with results obtained for ImageNet in common diffusion model literature:
 
     \b
-    python dataset_tool.py convert --source=downloads/imagenet/ILSVRC/Data/CLS-LOC/train \\
-        --dest=datasets/img64.zip --resolution=64x64 --transform=center-crop-dhariwal
+    python dataset_tool.py convert \
+    --source=$HOME/scratch-volume/data-fetal-us-edm2/AfricanDataset/Zenodo_dataset \
+    --dest=$HOME/scratch-volume/data-fetal-us-edm2/transformed-datasets/ad64.zip \
+    --resolution=64x64 \
+    --transform=center-crop-dhariwal
+
     """
     PIL.Image.init()
     if dest == "":

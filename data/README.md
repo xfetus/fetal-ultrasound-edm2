@@ -1,4 +1,6 @@
-# FETAL_PLANES_DB: Common maternal-fetal ultrasound images (12,400 images in 2.1GB)
+# Datasets
+
+## FETAL_PLANES_DB: Common maternal-fetal ultrasound images (12,400 images in 2.1GB)
 
 **Burgos-Artizzu, X.P., Coronado-Gutiérrez, D., Valenzuela-Alcaraz, B. et al. Evaluation of deep convolutional neural networks for automatic classification of common maternal fetal ultrasound planes. Sci Rep 10, 10200 (2020). https://doi.org/10.1038/s41598-020-67076-5**
 ### Data Description
@@ -11,7 +13,7 @@ All information related with the images is in `FETAL_PLANES_DB_data` (provided b
 The dataset details are described in our open-acces paper: [Evaluation of deep convolutional neural networks for automatic classification of common maternal fetal ultrasound planes](https://rdcu.be/b47NX)
 
 
-## Download dataset
+### Download dataset
 
 Site and size
 * https://zenodo.org/records/3904280
@@ -40,10 +42,10 @@ If you find this dataset useful, please cite:
 
 
 
-# FPUS23_Dataset: fetus phantom ultrasound dataset (15,728 images in 5.98Gb)
+## FPUS23_Dataset: fetus phantom ultrasound dataset (15,728 images in 5.98Gb)
 FPUS23, fetus phantom ultrasound dataset, can be used to identify (1) the correct diagnostic planes for estimating fetal biometric values, (2) fetus orientation, (3) their anatomical features, and (4) bounding boxes of the fetus phantom anatomies at 23 weeks gestation. The entire dataset is composed of 15,728 images.
 
-## Download datasets
+### Download datasets
 ```bash
 mkdir -p ~/scratch-volume/data-fetal-us-edm2 && cd ~/scratch-volume/data-fetal-us-edm2
 wget -O FPUS23_Dataset.zip \
@@ -58,9 +60,9 @@ Prabakaran, Bharath Srinivas, Paul Hamelmann, Erik Ostrowski, and Muhammad Shafi
 	* google citations https://scholar.google.com/scholar?cites=4749675840285171641&as_sdt=2005&sciodt=0,5&hl=en
 
 
-# Maternal fetal ultrasound planes from low-resource imaging settings in five African countries (451 images in 40.86 MB)
+## Maternal fetal ultrasound planes from low-resource imaging settings in five African countries (451 images in 40.86 MB)
 
-## Download datasets
+### Download datasets
 
 ```bash
 mkdir -p ~/scratch-volume/data-fetal-us-edm2 && cd ~/scratch-volume/data-fetal-us-edm2
@@ -71,13 +73,13 @@ rm Zenodo_dataset.tar.xz
 ```
 
 
-## References
+### References
 * Preprint: https://arxiv.org/abs/2209.09610
 * Journal article: https://www.nature.com/articles/s41598-023-29490-3
 
-# Fetal Abdominal Structures Segmentation Dataset Using Ultrasonic Images (1588 images,  1.06GB)
+## Fetal Abdominal Structures Segmentation Dataset Using Ultrasonic Images (1588 images,  1.06GB)
 
-## Download datasets
+### Download datasets
 ```bash
 mkdir -p ~/scratch-volume/data-fetal-us-edm2 && cd ~/scratch-volume/data-fetal-us-edm2
 wget --content-disposition \
@@ -88,12 +90,12 @@ unzip fetal_dataset.zip -d FetalAbdominalSegmentation
 rm fetal_dataset.zip
 ```
 
-## References
+### References
 * https://data.mendeley.com/datasets/4gcpm9dsc3/1
 * https://www.kaggle.com/datasets/orvile/fetal-abdominal-structures-segmentation-dataset/data
 
 
-# Path setup for models
+## Path setup for models
 
 ```bash
 mkdir -p ~/scratch-volume/data-fetal-us-edm2/OUTPUT_DIRECTORY
@@ -115,4 +117,24 @@ drwxr-sr-x.  3 jovyan nfs-group-10320 4096 Jun 11 23:23 FETAL_PLANES_DB
 drwxr-sr-x.  5 jovyan nfs-group-10320 4096 Jun 11 23:28 FPUS23
 drwxr-sr-x.  3 jovyan nfs-group-10320 4096 Jun 11 23:23 models
 drwxr-sr-x.  2 jovyan nfs-group-10320 4096 Jun 11 23:29 OUTPUT_DIRECTORY
+```
+
+
+## Dataset tool
+Converting data to 512x512 resolution.
+
+```
+## FETAL_PLANES_DB
+python dataset_tool.py convert \
+--source=$HOME/scratch-volume/data-fetal-us-edm2/FETAL_PLANES_DB \
+--dest=$HOME/scratch-volume/data-fetal-us-edm2/transformed-datasets/fp512.zip \
+--resolution=512x512 \
+--transform=center-crop-dhariwal
+
+## AfricanDataset
+python dataset_tool.py convert \
+--source=$HOME/scratch-volume/data-fetal-us-edm2/AfricanDataset/Zenodo_dataset \
+--dest=$HOME/scratch-volume/data-fetal-us-edm2/transformed-datasets/ad512.zip \
+--resolution=512x512 \
+--transform=center-crop-dhariwal
 ```
